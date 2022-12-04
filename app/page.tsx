@@ -1,26 +1,39 @@
-import Link from "next/link";
+// import Experience from "./Experience";
 import { getPlaylist } from "../lib/spotify";
+import Canvas from "./canvas";
+import Song from "./song";
+interface Item {
+  track: {
+    id: string;
+    name: string;
+  };
+}
+interface Song {
+  id: string;
+  name: string;
+  connections?: string[];
+}
 
-export default async function Home(){
-    const playlist = await getPlaylist();
-    
-    return (
-        <main>
-            <h1>My Playlist</h1>
-            <ol>
-                {playlist.items.map((item: any) => (
-                    <li key={item.track.id}>
-                        <Link href={`https://open.spotify.com/track/${item.track.id}`}>
-                            {item.track.name}
-                        </Link>
-                    </li>
-                ))}
-                {/* {playlist.tracks.items.map((item: { track: { id: Key | null | undefined; name: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined; }; }) => (
-                    <li key={item.track.id}>
-                        {item.track.name}
-                    </li>
-                ))} */}
-            </ol>
-        </main>
-    )
+export default async function Home() {
+  const playlist = (await getPlaylist()) as { items: Item[] };
+  const tracks = playlist.items.map((item: any) => item.track.id);
+  const names = playlist.items.map((item: any) => item.track.name);
+  const data = [] as Song[];
+  tracks.forEach((track: any, index: any) => {
+    data.push({ id: track, name: names[index] });
+  });
+
+  return (
+    <>
+      {/* @ts-ignore */}
+      {/* <Experience playlist={playlist} /> */}
+      <Canvas>
+        <ambientLight />
+        <pointLight position={[10, 10, 10]} />
+        {data.map((song: Song) => (
+          <Song key={song.id} song={song} />
+        ))}
+      </Canvas>
+    </>
+  );
 }
