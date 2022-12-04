@@ -16,6 +16,7 @@ interface Song {
 
 export default async function Home() {
   const playlist = (await getPlaylist()) as { items: Item[] };
+  
   const tracks = playlist.items.map((item: any) => item.track.id);
   const names = playlist.items.map((item: any) => item.track.name);
   const data = [] as Song[];

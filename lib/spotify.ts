@@ -28,10 +28,11 @@ export const getPlaylist = async () => {
       "Content-Type": "application/json",
     },
   });
-  const data = await res.json();
-  console.log(data);
-  
-  return await data;
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+  return res.json();
 };
 
 // const data = {
