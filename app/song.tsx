@@ -8,7 +8,7 @@ interface Song {
   connections?: string[];
 }
 
-export default function Song({ song }: { song: Song }) {
+export default function Song({ song, pos }: { song: Song, pos: number[] }) {
     const [hovered, setHover] = useState(false);
     const [active, setActive] = useState(false);
     const [position, setPosition] = useState([0, 0, 0]);
@@ -30,6 +30,7 @@ export default function Song({ song }: { song: Song }) {
             onPointerOut={(e) => setHover(false)}
             onPointerDown={(e) => setActive(!active)}
             scale={active ? [1.5, 1.5, 1.5] : [1, 1, 1]}
+            position={pos}
             castShadow
             receiveShadow
         >

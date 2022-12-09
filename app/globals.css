@@ -3,11 +3,18 @@
 @tailwind utilities;
 
 html,
-body {
+body,
+#canvas {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+      position: absolute!important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* overflow: hidden; */
 }
 
 a {

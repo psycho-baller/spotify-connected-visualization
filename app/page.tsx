@@ -1,4 +1,6 @@
 // import Experience from "./Experience";
+
+//import { OrbitControls } from "@react-three/drei";
 import { getPlaylist } from "../lib/spotify";
 import Canvas from "./canvas";
 import Song from "./song";
@@ -25,16 +27,21 @@ export default async function Home() {
   });
 
   return (
-    <>
+    <Canvas>
       {/* @ts-ignore */}
       {/* <Experience playlist={playlist} /> */}
-      <Canvas>
-        <ambientLight />
-        <pointLight position={[10, 10, 10]} />
-        {data.map((song: Song) => (
-          <Song key={song.id} song={song} />
-        ))}
-      </Canvas>
-    </>
+      {/* <OrbitControls/> */}
+      <ambientLight />
+      <pointLight position={[10, 10, 10]}  />
+      {data.map((song: Song) => {
+        // randomize position
+        const pos = [
+          Math.random() * 10 - 5,
+          Math.random() * 10 - 5,
+          Math.random() * 10 - 5,
+        ];
+        return <Song key={song.id} song={song} pos={pos} />;
+      })}
+    </Canvas>
   );
 }
