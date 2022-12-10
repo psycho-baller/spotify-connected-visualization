@@ -1,13 +1,8 @@
 
 import { useState , useRef} from "react";
+import type { SongType } from "../lib/types";
 
-interface Song {
-  id: string;
-  name: string;
-  connections?: string[];
-}
-
-export default function Song({ song, pos }: { song: Song, pos: number[] }) {
+export default function Song({ song, pos }: { song: SongType, pos: number[] }) {
     const [hovered, setHover] = useState(false);
     const [active, setActive] = useState(false);
     const [position, setPosition] = useState([0, 0, 0]);
