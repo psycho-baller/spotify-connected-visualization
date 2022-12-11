@@ -1,8 +1,7 @@
 
 import { useState , useRef} from "react";
 import type { SongType } from "../lib/types";
-// import { scroll}
-import { useTexture } from "@react-three/drei";
+import { Scroll, useTexture } from "@react-three/drei";
 
 export default function Song({ song, pos }: { song: SongType, pos: number[] }) {
     const [hovered, setHover] = useState(false);
@@ -22,26 +21,27 @@ export default function Song({ song, pos }: { song: SongType, pos: number[] }) {
 
     // const texture = song.image?.url ? useTexture(song.image?.url) : useTexture("https://i.imgur.com/1Q2wG4B.png");
     return (
-        <mesh
-            ref={ref}
-            onPointerOver={(e) => setHover(true)}
-            onPointerOut={(e) => setHover(false)}
-            onPointerDown={(e) => setActive(!active)}
-            onPointerUp={(e) => {
-            // link to song
-            const url = `https://open.spotify.com/track/${song.id}`;
-            window.open(url, "_blank")
-            }}
-            scale={active ? [1.5, 1.5, 1.5] : [1, 1, 1]}
-            position={pos}
-            //castShadow
-            //receiveShadow
-        >
-            <boxGeometry args={[1, 1, 1]} />
-            {/* <meshStandardMaterial map={texture} /> */}
-            <meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
-            <mesh />
-        </mesh>
+      <mesh
+        ref={ref}
+        onPointerOver={(e) => setHover(true)}
+        onPointerOut={(e) => setHover(false)}
+        onPointerDown={(e) => setActive(!active)}
+        onPointerUp={(e) => {
+          // link to song
+          const url = `https://open.spotify.com/track/${song.id}`;
+          window.open(url, "_blank");
+        }}
+        // style={{top: page * 100 + "vh"}}
+        scale={active ? [1.5, 1.5, 1.5] : [1, 1, 1]}
+        position={pos}
+        //castShadow
+        //receiveShadow
+      >
+        <boxGeometry args={[1, 1, 1]} />
+        {/* <meshStandardMaterial map={texture} /> */}
+        <meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
+        <mesh />
+      </mesh>
     );
 }
 
