@@ -1,21 +1,14 @@
 import { ScrollControls, Scroll, PerspectiveCamera, useScroll, Sparkles } from "@react-three/drei";
-import { useFrame  } from "@react-three/fiber";
+import { useFrame, useThree  } from "@react-three/fiber";
 import { useRef } from "react";
 import Songs from "../components/songs";
 import { SongType } from "../lib/types";
 
 export default function Experience({ data }: { data: SongType[] }) {
-  const cameraRef = useRef(null) as React.MutableRefObject<any>;
-
+  // const cameraRef = useRef(null) as React.MutableRefObject<any>;
+  const three = useThree();
+  
   useFrame((state) => {
-    // console.log(state);
-    // window.addEventListener("scroll", () => {
-    //     console.log("scrolling");
-    // });
-    // const offset = 1- ;
-    // console.log(scroll.offset);
-    
-    //   cameraRef.current.rotation.y += 0.01;
 
   });
 

@@ -12,13 +12,12 @@ export default function Songs({ data }: { data: SongType[] }) {
   let rand3: number;
 
   const scroll = useScroll();
-
+  
   useFrame((state) => {
     // rotate camera about the y axis when we scroll
-    // state.camera.rotation.x = scroll.offset * 50;
-    // state.camera.rotation.z = scroll.offset * 50;
-    state.camera.rotation.y = scroll.offset * 50;
-    // state.camera.lookAt(0, 0, 0);
+    state.camera.lookAt(0, 0, 0);
+    state.camera.position.x = Math.cos(scroll.offset * 50) * 10;
+    state.camera.position.z = Math.sin(scroll.offset * 50) * 10;
   });
 
   return (
@@ -30,13 +29,12 @@ export default function Songs({ data }: { data: SongType[] }) {
       {/* <pointLight position={[10, 10, 10]} /> */}
       {data.map((song: SongType, index: number) => {
         // randomize position
-        rand1 = Math.random();
-        rand2 = -index * 8;
-        // console.log(rand2, height);
+        rand1 = Math.random() * 10 - 5;
+        rand2 = -index * scroll.el.clientHeight / 100;
 
         // rand3 = Math.random();
 
-        const pos = [rand1 * 10 - 5, rand2, 0];
+        const pos = [rand1, rand2, 0];
         return <Song key={song.id} song={song} pos={pos} />;
       })}
     </>

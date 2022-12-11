@@ -6,4 +6,5 @@
 - [X] Make it rotatable only relative to the y-axis
 - [X] Order the songs vertically
 - [ ] make particles all around the screen
-- [ ] get the rotation right
+- [X] get the rotation right
+- [ ] add the connections
