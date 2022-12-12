@@ -56,11 +56,7 @@ export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
       {/* @ts-ignore */}
       <Float rotationIntensity={1} floatIntensity={4} position={posText}>
         {/* @ts-ignore */}
-        <Text
-          font="bangers-v20-latin-regular.woff"
-          fontSize={0.4}
-          ref={textRef}
-        >
+        <Text font="Bangers-Regular.woff2" fontSize={0.4} ref={textRef}>
           {song.name}
           <meshNormalMaterial />
         </Text>
@@ -69,9 +65,15 @@ export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
         // show all around the song like a circle
         numOfConnections = song.connections.instagram.length;
 
-
-        
-        return <Connection pos={pos} connection={connection} len={numOfConnections} index={index} key={index}  />
+        return (
+          <Connection
+            pos={pos}
+            connection={connection}
+            len={numOfConnections}
+            index={index}
+            key={index}
+          />
+        );
       })}
     </group>
   );
