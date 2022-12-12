@@ -54,9 +54,9 @@ export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
         <meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
       </mesh>
       {/* @ts-ignore */}
-      <Float rotationIntensity={1} floatIntensity={4} position={posText}>
+      <Float rotationIntensity={1} floatIntensity={4} position={posText} floatingRange={[-0.05, 0.05]}>
         {/* @ts-ignore */}
-        <Text font="Bangers-Regular.woff2" fontSize={0.4} ref={textRef}>
+        <Text font="Bangers-Regular.ttf" fontSize={0.4} ref={textRef}>
           {song.name}
           <meshNormalMaterial />
         </Text>

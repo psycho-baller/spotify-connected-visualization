@@ -13,6 +13,7 @@ export default function Songs({ data }: { data: SongType[] }) {
 
   const scroll = useScroll();
   
+  
   useFrame((state) => {
     // rotate camera about the y axis when we scroll
     // state.camera.lookAt(0, 0, 0);
@@ -27,7 +28,7 @@ export default function Songs({ data }: { data: SongType[] }) {
       {data.map((song: SongType, index: number) => {
         // randomize position
         rand1 = Math.random() * 10 - 5;
-        rand2 = -index * scroll.el.clientHeight / 100;
+        rand2 = -index * 7.5;
 
         // rand3 = Math.random();
 
