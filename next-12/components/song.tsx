@@ -71,7 +71,7 @@ export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
 
 
         
-        return <Connection pos={pos} connection={connection} len={numOfConnections} index={index}  />
+        return <Connection pos={pos} connection={connection} len={numOfConnections} index={index} key={index}  />
       })}
     </group>
   );
