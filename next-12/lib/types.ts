@@ -12,8 +12,8 @@ export interface SongType {
     height: number;
     width: number;
   };
-  connections?: {
-    instagram?: string[];
-    spotify?: string[];
+  connections: {
+    instagram: string[];
+    spotify: string[];
   };
 }

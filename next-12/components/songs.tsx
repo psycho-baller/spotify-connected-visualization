@@ -15,17 +15,14 @@ export default function Songs({ data }: { data: SongType[] }) {
   
   useFrame((state) => {
     // rotate camera about the y axis when we scroll
-    state.camera.lookAt(0, 0, 0);
-    state.camera.position.x = Math.cos(scroll.offset * 50) * 10;
-    state.camera.position.z = Math.sin(scroll.offset * 50) * 10;
+    // state.camera.lookAt(0, 0, 0);
+    // state.camera.position.x = Math.cos(scroll.offset * 50) * 10;
+    // state.camera.position.z = Math.sin(scroll.offset * 50) * 10;
   });
 
   return (
     <>
-      <mesh>
-        <sphereGeometry args={[1, 32, 32]} />
-        <meshStandardMaterial color="red" />
-      </mesh>
+
       {/* <pointLight position={[10, 10, 10]} /> */}
       {data.map((song: SongType, index: number) => {
         // randomize position
@@ -34,7 +31,7 @@ export default function Songs({ data }: { data: SongType[] }) {
 
         // rand3 = Math.random();
 
-        const pos = [rand1, rand2, 0];
+        const pos = [0, rand2, 0];
         return <Song key={song.id} song={song} pos={pos} />;
       })}
     </>

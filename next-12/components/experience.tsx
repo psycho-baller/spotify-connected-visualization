@@ -52,6 +52,7 @@ export default function Experience({ data }: { data: SongType[] }) {
         // position={[0, 0, 0]}
       />
       <ambientLight />
+      <pointLight position={[10, 10, 10]} />
       {/* @ts-ignore */}
       {/* <PerspectiveCamera ref={cameraRef} makeDefault position={[0, 0, 10]} /> */}
       <ScrollControls
