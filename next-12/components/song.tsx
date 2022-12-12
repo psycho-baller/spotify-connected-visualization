@@ -62,7 +62,7 @@ export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
       >
         {/* @ts-ignore */}
         <Text
-          font={"bangers-v20-latin-regular.woff"}
+          // font={"bangers-v20-latin-regular.woff"}
           fontSize={0.4}
           ref={textRef}
         >
