@@ -7,4 +7,7 @@
 - [X] Order the songs vertically
 - [ ] make particles all around the screen
 - [X] get the rotation right
-- [ ] add the connections
+- [X] add the connections
+- [ ] add the insta names
+- [ ] z index (particles should be behind the songs)
+- [ ] figure out the font problem
