@@ -54,11 +54,20 @@ export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
         <meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
       </mesh>
       {/* @ts-ignore */}
-      <Float rotationIntensity={1} floatIntensity={4} position={posText} floatingRange={[-0.05, 0.05]}>
+      <Float
+        rotationIntensity={1}
+        floatIntensity={4}
+        position={posText}
+        floatingRange={[-0.05, 0.05]}
+      >
         {/* @ts-ignore */}
-        <Text font="RubikVinyl-Regular.ttf" fontSize={0.4} ref={textRef}>
-          {song.name}
+        <Text
+          font={"bangers-v20-latin-regular.woff"}
+          fontSize={0.4}
+          ref={textRef}
+        >
           <meshNormalMaterial />
+          {song.name}
         </Text>
       </Float>
       {song.connections.instagram.map((connection, index) => {
