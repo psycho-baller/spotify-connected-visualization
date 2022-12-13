@@ -10,9 +10,8 @@ export default function Experience({ data }: { data: SongType[] }) {
 
   return (
     <>
-    
       <ambientLight />
-      <pointLight position={[10, 10, 10]} />
+      {/* <pointLight position={[10, 10, 10]} intensity={0.1} /> */}
       {/* @ts-ignore */}
       {/* <PerspectiveCamera ref={cameraRef} makeDefault position={[0, 0, 10]} /> */}
       <ScrollControls
@@ -21,7 +20,7 @@ export default function Experience({ data }: { data: SongType[] }) {
       >
         <Scroll>
           <Songs data={data} />
-          <Particles/>
+          <Particles />
         </Scroll>
       </ScrollControls>
     </>

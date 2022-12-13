@@ -7,7 +7,7 @@ export interface ItemType {
 export interface SongType {
   id: string;
   name: string;
-  image?: {
+  image: {
     url: string;
     height: number;
     width: number;

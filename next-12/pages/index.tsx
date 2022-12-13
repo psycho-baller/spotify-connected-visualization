@@ -9,20 +9,9 @@ import router from "next/router";
 export default function Home({ data }: { data: SongType[] }) {
 
   return (
-    <>
-      {/* <button onClick={() => {
-        const dataString = JSON.stringify(data);
-        router.push({
-          pathname: "/addConnections",
-          query: { data: dataString },
-        });
-      }}>
-        Add connections
-      </button> */}
       <Canvas id="canvas">
         <Experience data={data} />
       </Canvas>
-    </>
   );
 }
 
@@ -35,7 +24,7 @@ export async function getStaticProps() {
   const images = playlistTracks.map((item: any) => {
     if (item.track.album.images.length > 0) {
       return {
-        url: item.track.album.images[0],
+        url: item.track.album.images[0].url,
         height: item.track.album.images[0].height,
         width: item.track.album.images[0].width,
       };
@@ -46,6 +35,7 @@ export async function getStaticProps() {
   tracks.forEach((track: any, index: any) => {
     data.push({ id: track, name: names[index], image: images[index], connections: { instagram: [], spotify: [] } });
   });
+  
 
   data[0].connections.instagram = [
     "keana.gigliotti",

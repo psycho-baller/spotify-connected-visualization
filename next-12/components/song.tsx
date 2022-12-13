@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import type { SongType } from "../lib/types";
-import { Text, Float } from "@react-three/drei";
+import { Text, Float, useTexture } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import Connection from "./connection";
 export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
@@ -28,18 +28,26 @@ export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
     // keep the text looking at the camera
     // @ts-ignore
     // textRef.current.lookAt(state.camera.position);
-
+    if(hovered){
+      // @ts-ignore
+      ref.current.rotation.y += 0.01;
+    }
   });
 
+  
 
-  // const texture = song.image?.url ? useTexture(song.image?.url) : useTexture("https://i.imgur.com/1Q2wG4B.png");
+
+  const texture = song.image?.url ? useTexture(song.image?.url) : useTexture("https://i.imgur.com/1Q2wG4B.png");
   return (
     <group
     // renderOrder={2}
     >
       <mesh
         ref={ref}
-        onPointerOver={(e) => setHover(true)}
+        onPointerOver={(e) =>{
+          setHover(true)
+          // rotate about the y axis
+        } }
         onPointerOut={(e) => setHover(false)}
         onPointerDown={(e) => setActive(!active)}
         onPointerUp={(e) => {
@@ -54,7 +62,7 @@ export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
       >
         <boxGeometry args={[1, 1, 1]} />
         {/* <meshStandardMaterial map={texture} /> */}
-        <meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
+        <meshStandardMaterial map={texture} />
       </mesh>
       {/* @ts-ignore */}
       <Float

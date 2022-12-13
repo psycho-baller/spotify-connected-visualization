@@ -21,7 +21,7 @@ export default function Particles() {
 
     useFrame((state) => {
       // rotate the sparkles around the camera when we scroll
-        sparklesRef.current.rotation.x = scroll.offset * 50;
+        sparklesRef.current.rotation.x = -scroll.offset * 50;
       // make sure the sparkles follow scroll
       sparklesRef.current.position.y = -scroll.offset * 376;
       
