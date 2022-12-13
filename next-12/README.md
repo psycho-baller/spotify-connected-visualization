@@ -5,9 +5,12 @@
 - [X] Make it scrollable (and rotating while scrolling)
 - [X] Make it rotatable only relative to the y-axis
 - [X] Order the songs vertically
-- [ ] make particles all around the screen
+- [X] make particles all around the screen
 - [X] get the rotation right
 - [X] add the connections
-- [ ] add the insta names
-- [ ] z index (particles should be behind the songs)
-- [ ] figure out the font problem
+- [X] add the insta names
+- [X] z index (particles should be behind the songs)
+- [X] figure out the font problem
+- [ ] design the page (songs, connections, text, etc...)
+- [ ] phone compatability: have data for different numbers over the project for phone, ipad, desktop
+

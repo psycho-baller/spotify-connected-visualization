@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import type { SongType } from "../lib/types";
-import { Scroll, useTexture, Text, Center, Text3D, Float, useScroll } from "@react-three/drei";
+import { Text, Float } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import Connection from "./connection";
 export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
@@ -18,6 +18,7 @@ export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
   const [geometry, setGeometry] = useState("boxGeometry");
   const [args, setArgs] = useState([1, 1, 1]);
   const ref = useRef();
+  // @ts-ignore
   const posText = [pos[0], pos[1] + 1, pos[2]];
 
   const textRef = useRef();
@@ -33,7 +34,9 @@ export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
 
   // const texture = song.image?.url ? useTexture(song.image?.url) : useTexture("https://i.imgur.com/1Q2wG4B.png");
   return (
-    <group>
+    <group
+    // renderOrder={2}
+    >
       <mesh
         ref={ref}
         onPointerOver={(e) => setHover(true)}

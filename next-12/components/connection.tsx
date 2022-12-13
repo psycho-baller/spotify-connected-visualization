@@ -1,4 +1,4 @@
-import { useScroll } from "@react-three/drei";
+import { Float, useScroll, Text } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 
@@ -32,6 +32,11 @@ export default function Connections({
       0,
     ];
   });
+  const posText = [
+    pos[0],
+    pos[1],
+    pos[2] + 1
+  ]
 
   return (
     <mesh
@@ -52,6 +57,23 @@ export default function Connections({
     >
       <sphereGeometry args={[0.5, 16, 16]} />
       {/* <meshStandardMaterial map={texture} /> */}
+      {/* @ts-ignore */}
+      <Float
+        rotationIntensity={1}
+        floatIntensity={4}
+        position={posText}
+        floatingRange={[-0.05, 0.05]}
+      >
+        {/* @ts-ignore */}
+        <Text
+          font={"bangers-v20-latin-regular.woff"}
+          fontSize={0.2}
+          // ref={textRef}
+        >
+          <meshNormalMaterial />
+          {connection}
+        </Text>
+      </Float>
       <meshStandardMaterial color={"hotpink"} />
     </mesh>
   );

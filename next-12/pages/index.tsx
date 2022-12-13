@@ -1,13 +1,7 @@
-import {
-  OrbitControls,
-  PerspectiveCamera,
-  Scroll,
-  ScrollControls,
-} from "@react-three/drei";
-import { Canvas, useFrame } from "@react-three/fiber";
+
+import { Canvas } from "@react-three/fiber";
 import type { ItemType, SongType } from "../lib/types";
 import { getPlaylist } from "../lib/spotify";
-import { useRef } from "react";
 import Experience from "../components/experience";
 import Link from "next/link";
 import router from "next/router";
