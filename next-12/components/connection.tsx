@@ -24,7 +24,7 @@ export default function Connections({
     rotateX = - scroll.offset * 100;
     rotateY = - scroll.offset * 100;
     connectionPos = [
-      //                fraction of the circle    * radius of the circle
+      //                fraction of the circle                   * radius of the circle
       (connectionRef.current.position.x =
         pos[0] + Math.cos((index / len) * 2 * Math.PI + rotateX) * 3),
       (connectionRef.current.position.y =

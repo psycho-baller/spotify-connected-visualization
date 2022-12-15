@@ -3,8 +3,6 @@ import { Canvas } from "@react-three/fiber";
 import type { ItemType, SongType } from "../lib/types";
 import { getPlaylist } from "../lib/spotify";
 import Experience from "../components/experience";
-import Link from "next/link";
-import router from "next/router";
 
 export default function Home({ data }: { data: SongType[] }) {
 

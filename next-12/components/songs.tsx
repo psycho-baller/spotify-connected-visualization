@@ -2,7 +2,7 @@
 import { useScroll } from "@react-three/drei";
 
 import Song from "./song";
-import type { ItemType, SongType } from "../lib/types";
+import type { SongType } from "../lib/types";
 // import { useWindowDimensions } from "../lib/hooks";
 import { useFrame } from "@react-three/fiber";
 
