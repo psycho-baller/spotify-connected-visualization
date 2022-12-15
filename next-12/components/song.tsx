@@ -37,7 +37,8 @@ export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
   
 
 
-  const texture = song.image?.url ? useTexture(song.image?.url) : useTexture("https://i.imgur.com/1Q2wG4B.png");
+  const textureUrl = song.image?.url ? (song.image?.url) : ("https://i.imgur.com/1Q2wG4B.png");
+  const texture = useTexture(textureUrl);
   return (
     <group
     // renderOrder={2}

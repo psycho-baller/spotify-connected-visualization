@@ -13,4 +13,3 @@
 - [X] figure out the font problem
 - [ ] design the page (songs, connections, text, etc...)
 - [ ] phone compatability: have data for different numbers over the project for phone, ipad, desktop
-
