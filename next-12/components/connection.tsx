@@ -4,38 +4,54 @@ import { useRef } from "react";
 
 export default function Connections({
   connection,
-  pos,
+  boxRef,
   len,
   index,
 }: {
   connection: string;
-  pos: number[];
+  boxRef: React.MutableRefObject<any>;
   len: number;
   index: number;
 }) {
-  let connectionPos: number[] = [...pos];
-
-  let fontSize = 0.4
-  let floatRange = 0.04
-  let radius = 4
+  let connectionPos: number[] = [0,0, 0];
+  let MyWidth = 13.844849711505825;
+  let fontSize = 0.4;
+  let floatRange = 0.02;
+  let radius = 4;
+  const initialVals = [fontSize, floatRange, radius];
+  let width: number;
+  let height: number;
 
   const connectionRef = useRef(null) as React.MutableRefObject<any>;
   let rotateX = 0;
   let rotateY = 0;
   const scroll = useScroll();
+  const textRef = useRef();
+  const floatRef = useRef();
 
   useFrame((state) => {
     // rotate the connection about the z axis when we scroll
-    rotateX = - scroll.offset * 100;
-    rotateY = - scroll.offset * 100;
-    connectionPos = [
-      //                fraction of the circle                   * radius of the circle
-      (connectionRef.current.position.x =
-        pos[0] + Math.cos((index / len) * 2 * Math.PI + rotateX) * radius),
-      (connectionRef.current.position.y =
-        pos[1] + Math.sin((index / len) * 2 * Math.PI + rotateY) * radius),
-      0,
-    ];
+    rotateX = -scroll.offset * 100;
+    rotateY = -scroll.offset * 100;
+    width = state.viewport.width;
+
+    fontSize = initialVals[0] * (width / MyWidth);
+    floatRange = initialVals[1] * (width / MyWidth);
+    radius = initialVals[2] * (width / MyWidth);
+
+    //                fraction of the circle                   * radius of the circle
+    connectionRef.current.position.x =
+      boxRef.current.position.x / boxRef.current.scale.x +
+      Math.cos((index / len) * 2 * Math.PI + rotateX) * radius;
+    connectionRef.current.position.y =
+      boxRef.current.position.y / boxRef.current.scale.y +
+      Math.sin((index / len) * 2 * Math.PI + rotateY) * radius;
+    
+      // @ts-ignore
+      (textRef.current.fontSize = fontSize);
+    // @ts-ignore
+    floatRef.current.floatingRange = [-floatRange, floatRange];
+    
   });
 
   return (
@@ -59,12 +75,14 @@ export default function Connections({
       {/* <meshStandardMaterial map={texture} /> */}
       {/* @ts-ignore */}
       <Float
+        ref={floatRef}
         rotationIntensity={1}
         floatIntensity={4}
         floatingRange={[-floatRange, floatRange]}
       >
         {/* @ts-ignore */}
         <Text
+          ref={textRef}
           font={"bangers-v20-latin-regular.woff"}
           fontSize={fontSize}
           // ref={textRef}
