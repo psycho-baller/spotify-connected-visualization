@@ -19,7 +19,7 @@ export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
   const [args, setArgs] = useState([1, 1, 1]);
   const ref = useRef();
   // @ts-ignore
-  const posText = [pos[0], pos[1] + .6, pos[2]];
+  const posText = [pos[0], pos[1] + 1, pos[2]];
 
   const textRef = useRef();
   let numOfConnections: number = 0;
@@ -61,7 +61,7 @@ export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
         //castShadow
         //receiveShadow
       >
-        <boxGeometry args={[.5, .5, .5]} />
+        <boxGeometry args={[1, 1, 1]} />
         {/* <meshStandardMaterial map={texture} /> */}
         <meshStandardMaterial map={texture} />
       </mesh>
@@ -70,12 +70,12 @@ export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
         rotationIntensity={1}
         floatIntensity={4}
         position={posText}
-        floatingRange={[-0.025, 0.025]}
+        floatingRange={[-0.05, 0.05]}
       >
         {/* @ts-ignore */}
         <Text
           font={"bangers-v20-latin-regular.woff"}
-          fontSize={0.2}
+          fontSize={0.4}
           ref={textRef}
         >
           <meshNormalMaterial />

@@ -28,9 +28,9 @@ export default function Connections({
     connectionPos = [
       //                fraction of the circle                   * radius of the circle
       (connectionRef.current.position.x =
-        pos[0] + Math.cos((index / len) * 2 * Math.PI + rotateX) * 1.5),
+        pos[0] + Math.cos((index / len) * 2 * Math.PI + rotateX) * 3),
       (connectionRef.current.position.y =
-        pos[1] + Math.sin((index / len) * 2 * Math.PI + rotateY) * 1.5),
+        pos[1] + Math.sin((index / len) * 2 * Math.PI + rotateY) * 3),
       0,
     ];
 
@@ -60,7 +60,7 @@ export default function Connections({
       <Float
         rotationIntensity={1}
         floatIntensity={4}
-        // position={connectionPos}
+        position={connectionPos}
         floatingRange={[-0.05, 0.05]}
       >
         {/* @ts-ignore */}
