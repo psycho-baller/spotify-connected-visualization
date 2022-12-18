@@ -14,6 +14,8 @@ export default function Connections({
   index: number;
 }) {
   let connectionPos: number[] = [...pos];
+  let posText = [connectionPos[0], connectionPos[1], connectionPos[2] + 1];
+
   const connectionRef = useRef(null) as React.MutableRefObject<any>;
   let rotateX = 0;
   let rotateY = 0;
@@ -26,17 +28,14 @@ export default function Connections({
     connectionPos = [
       //                fraction of the circle                   * radius of the circle
       (connectionRef.current.position.x =
-        pos[0] + Math.cos((index / len) * 2 * Math.PI + rotateX) * 3),
+        pos[0] + Math.cos((index / len) * 2 * Math.PI + rotateX) * 1.5),
       (connectionRef.current.position.y =
-        pos[1] + Math.sin((index / len) * 2 * Math.PI + rotateY) * 3),
+        pos[1] + Math.sin((index / len) * 2 * Math.PI + rotateY) * 1.5),
       0,
     ];
+
+    posText = [connectionPos[0], connectionPos[1], connectionPos[2] ];
   });
-  const posText = [
-    pos[0],
-    pos[1],
-    pos[2] + 1
-  ]
 
   return (
     <mesh
@@ -55,13 +54,13 @@ export default function Connections({
       //castShadow
       //receiveShadow
     >
-      <sphereGeometry args={[0.5, 16, 16]} />
+      {/* <sphereGeometry args={[0.5, 16, 16]} /> */}
       {/* <meshStandardMaterial map={texture} /> */}
       {/* @ts-ignore */}
       <Float
         rotationIntensity={1}
         floatIntensity={4}
-        position={posText}
+        // position={connectionPos}
         floatingRange={[-0.05, 0.05]}
       >
         {/* @ts-ignore */}
