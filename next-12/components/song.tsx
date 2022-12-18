@@ -1,8 +1,9 @@
 import { useState, useRef } from "react";
 import type { SongType } from "../lib/types";
-import { Text, Float, useTexture } from "@react-three/drei";
+import { Text, Float, useTexture, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import Connection from "./connection";
+import { textChangeRangeIsUnchanged } from "typescript";
 export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
   const [hovered, setHover] = useState(false);
   const [active, setActive] = useState(false);
@@ -18,16 +19,22 @@ export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
   const [geometry, setGeometry] = useState("boxGeometry");
   const [args, setArgs] = useState([1, 1, 1]);
   const ref = useRef();
+    
+  let textRange = 0.05;
+  let boxSize = 2;
+  let fontSize = 0.6;
+  let textYOffset = 1.6
+
   // @ts-ignore
-  const posText = [pos[0], pos[1] + 1, pos[2]];
+  const posText = [pos[0], pos[1] + textYOffset, pos[2]];
 
   const textRef = useRef();
   let numOfConnections: number = 0;
 
   useFrame((state) => {
-    // keep the text looking at the camera
-    // @ts-ignore
-    // textRef.current.lookAt(state.camera.position);
+    // get the orientation of the device
+    console.log(state.viewport.width);
+    
     if(hovered){
       // @ts-ignore
       ref.current.rotation.y += 0.01;
@@ -61,7 +68,7 @@ export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
         //castShadow
         //receiveShadow
       >
-        <boxGeometry args={[1, 1, 1]} />
+        <boxGeometry args={[boxSize, boxSize, boxSize]} />
         {/* <meshStandardMaterial map={texture} /> */}
         <meshStandardMaterial map={texture} />
       </mesh>
@@ -70,12 +77,12 @@ export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
         rotationIntensity={1}
         floatIntensity={4}
         position={posText}
-        floatingRange={[-0.05, 0.05]}
+        floatingRange={[-textRange, textRange]}
       >
         {/* @ts-ignore */}
         <Text
           font={"bangers-v20-latin-regular.woff"}
-          fontSize={0.4}
+          fontSize={fontSize}
           ref={textRef}
         >
           <meshNormalMaterial />

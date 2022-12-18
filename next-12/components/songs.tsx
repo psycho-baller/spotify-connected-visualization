@@ -28,7 +28,7 @@ export default function Songs({ data }: { data: SongType[] }) {
       {data.map((song: SongType, index: number) => {
         // randomize position
         rand1 = Math.random() * 10 - 5;
-        rand2 = -index * 7.5;
+        rand2 = -index * 8.5;
 
         // rand3 = Math.random();
 

@@ -14,7 +14,10 @@ export default function Connections({
   index: number;
 }) {
   let connectionPos: number[] = [...pos];
-  let posText = [connectionPos[0], connectionPos[1], connectionPos[2] + 1];
+
+  let fontSize = 0.4
+  let floatRange = 0.04
+  let radius = 4
 
   const connectionRef = useRef(null) as React.MutableRefObject<any>;
   let rotateX = 0;
@@ -28,13 +31,11 @@ export default function Connections({
     connectionPos = [
       //                fraction of the circle                   * radius of the circle
       (connectionRef.current.position.x =
-        pos[0] + Math.cos((index / len) * 2 * Math.PI + rotateX) * 3),
+        pos[0] + Math.cos((index / len) * 2 * Math.PI + rotateX) * radius),
       (connectionRef.current.position.y =
-        pos[1] + Math.sin((index / len) * 2 * Math.PI + rotateY) * 3),
+        pos[1] + Math.sin((index / len) * 2 * Math.PI + rotateY) * radius),
       0,
     ];
-
-    posText = [connectionPos[0], connectionPos[1], connectionPos[2] ];
   });
 
   return (
@@ -60,13 +61,12 @@ export default function Connections({
       <Float
         rotationIntensity={1}
         floatIntensity={4}
-        position={connectionPos}
-        floatingRange={[-0.05, 0.05]}
+        floatingRange={[-floatRange, floatRange]}
       >
         {/* @ts-ignore */}
         <Text
           font={"bangers-v20-latin-regular.woff"}
-          fontSize={0.2}
+          fontSize={fontSize}
           // ref={textRef}
         >
           <meshNormalMaterial />
