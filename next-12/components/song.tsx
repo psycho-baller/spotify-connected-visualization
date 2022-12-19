@@ -4,7 +4,7 @@ import { Text, Float, useTexture, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import Connection from "./connection";
 import { textChangeRangeIsUnchanged } from "typescript";
-export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
+export default function Song({ song, index }: { song: SongType; index: number }) {
   const [hovered, setHover] = useState(false);
   const [active, setActive] = useState(false);
   const [position, setPosition] = useState([0, 0, 0]);
@@ -30,10 +30,8 @@ export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
   let textYOffset = 1.6;
   const initialVals = [textRange, boxSize, fontSize, textYOffset];
   let width: number;
-  let height: number;
+  let boxSeparation: number;
 
-  // @ts-ignore
-  const posText = [pos[0], pos[1] + textYOffset, pos[2]];
 
   let numOfConnections: number = 0;
 
@@ -53,21 +51,17 @@ export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
     ref.current.scale.set(boxSize, boxSize, boxSize);
     // @ts-ignore
     textRef.current.fontSize = fontSize;
-    // floatRef.current.scale.set(fontSize, fontSize, fontSize);
     // @ts-ignore
     textPosRef.current.position.y = ref.current.position.y + textYOffset;
     // @ts-ignore
     floatRef.current.floatingRange = [-textRange, textRange];
 
-    // pos = [
-    //   // @ts-ignore
-    //   ref.current.position.x,
-    //   // @ts-ignore
-    //   ref.current.position.y,
-    //   // @ts-ignore
-    //   ref.current.position.z,
-    // ];
-  if (song.connections.instagram[2] == "rami") console.log("box", ref.current.position.y);
+    boxSeparation = (width / MyWidth) * 8.5;
+    // if (width < 5) {
+    // ref.current.position.y = -(index * boxSeparation) + 1; 
+    // } else
+    ref.current.position.y = -(index * boxSeparation); 
+
 
   });
 
@@ -94,14 +88,17 @@ export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
           window.open(url, "_blank");
         }}
         // scale={active ? [1.5, 1.5, 1.5] : [1, 1, 1]}
-        position={pos}
+        // position={}
         //castShadow
         //receiveShadow
       >
         <boxGeometry />
         <meshStandardMaterial map={texture} />
       </mesh>
-      <mesh ref={textPosRef} position={posText}>
+      <mesh
+        ref={textPosRef}
+        //position={[0, ref.current.position.y + textYOffset, 0]}
+      >
         {/* @ts-ignore */}
         <Float
           ref={floatRef}
@@ -129,7 +126,6 @@ export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
 
         return (
           <Connection
-            pos={pos}
             boxRef={ref}
             connection={connection}
             len={numOfConnections}

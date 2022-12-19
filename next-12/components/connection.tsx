@@ -3,19 +3,16 @@ import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 
 export default function Connections({
-  pos,
   connection,
   boxRef,
   len,
   index,
 }: {
-  pos: number[];
   connection: string;
   boxRef: React.MutableRefObject<any>;
   len: number;
   index: number;
 }) {
-  let connectionPos: number[] = [...pos];
   let MyWidth = 13.844849711505825;
   let fontSize = 0.4;
   let floatRange = 0.02;
@@ -24,10 +21,10 @@ export default function Connections({
   let width: number;
   let height: number;
 
-  const connectionRef = useRef(null) as React.MutableRefObject<any>;
   let rotateX = 0;
   let rotateY = 0;
   const scroll = useScroll();
+  const connectionRef = useRef(null) as React.MutableRefObject<any>;
   const textRef = useRef(null) as React.MutableRefObject<any>;
   const floatRef = useRef(null) as React.MutableRefObject<any>;
 
@@ -69,7 +66,7 @@ export default function Connections({
       }}
       // style={{top: page * 100 + "vh"}}
       // scale={active ? [1.5, 1.5, 1.5] : [1, 1, 1]}
-      position={connectionPos}
+      //position={[0, boxRef.current.position.y, 0]}
       //castShadow
       //receiveShadow
     >

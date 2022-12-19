@@ -14,7 +14,12 @@ export default function Songs({ data }: { data: SongType[] }) {
   const scroll = useScroll();
   
   
+  
   useFrame((state) => {
+    console.log(scroll.el.clientWidth/state.viewport.width);
+  console.log();
+
+    
     // rotate camera about the y axis when we scroll
     // state.camera.lookAt(0, 0, 0);
     // state.camera.position.x = Math.cos(scroll.offset * 50) * 10;
@@ -28,12 +33,12 @@ export default function Songs({ data }: { data: SongType[] }) {
       {data.map((song: SongType, index: number) => {
         // randomize position
         rand1 = Math.random() * 10 - 5;
-        rand2 = -index * 8.5;
+        rand2 = -index * (8.5)
 
         // rand3 = Math.random();
 
         const pos = [0, rand2, 0];
-        return <Song key={song.id} song={song} pos={pos} />;
+        return <Song key={song.id} song={song} index={index} />;
       })}
     </>
   );
