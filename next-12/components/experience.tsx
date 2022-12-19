@@ -15,8 +15,9 @@ export default function Experience({ data }: { data: SongType[] }) {
       {/* @ts-ignore */}
       {/* <PerspectiveCamera ref={cameraRef} makeDefault position={[0, 0, 10]} /> */}
       <ScrollControls
-        pages={data.length}
+        pages={data.length *1.5}
         // damping={}
+        infinite={false} // Can also scroll infinitely (default: false)
       >
         <Scroll>
           <Songs data={data} />
