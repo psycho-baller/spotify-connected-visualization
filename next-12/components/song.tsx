@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import type { SongType } from "../lib/types";
-import { Text, Float, useTexture, useScroll } from "@react-three/drei";
+import { Text, Float, useTexture, useScroll, Html } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import Connection from "./connection";
 import { textChangeRangeIsUnchanged } from "typescript";
@@ -22,6 +22,7 @@ export default function Song({ song, index }: { song: SongType; index: number })
   const floatRef = useRef();
   const textPosRef = useRef();
   const textRef = useRef();
+  const htmlTextRef = useRef();
 
   let MyWidth = 13.844849711505825;
   let textRange = 0.025;
@@ -58,11 +59,12 @@ export default function Song({ song, index }: { song: SongType; index: number })
 
     boxSeparation = (width / MyWidth) * 8.5;
     // if (width < 5) {
-    // ref.current.position.y = -(index * boxSeparation) + 1; 
+    // ref.current.position.y = -(index * boxSeparation) + 1;
     // } else
-    ref.current.position.y = -(index * boxSeparation); 
-
-
+    ref.current.position.y = -(index * boxSeparation);
+    // @ts-ignore
+    htmlTextRef.current.position.y = -(index * boxSeparation) * 2;
+    // @ts-ignore
   });
 
   const textureUrl = song.image?.url
@@ -119,13 +121,20 @@ export default function Song({ song, index }: { song: SongType; index: number })
           </Text>
         </Float>
       </mesh>
-
+      <mesh ref={htmlTextRef}>
+        <Html
+        className="opacity-0"
+        >
+          {song.name}
+        </Html>
+      </mesh>
       {song.connections.instagram.map((connection, index) => {
         // show all around the song like a circle
         numOfConnections = song.connections.instagram.length;
 
         return (
           <Connection
+          textBoxRef={htmlTextRef}
             boxRef={ref}
             connection={connection}
             len={numOfConnections}

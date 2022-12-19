@@ -1,13 +1,15 @@
-import { Float, useScroll, Text } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import { Float, useScroll, Text, Html } from "@react-three/drei";
+import { useFrame, useThree } from "@react-three/fiber";
 import { useRef } from "react";
 
 export default function Connections({
+  textBoxRef,
   connection,
   boxRef,
   len,
   index,
 }: {
+  textBoxRef: React.MutableRefObject<any>;
   connection: string;
   boxRef: React.MutableRefObject<any>;
   len: number;
@@ -20,6 +22,7 @@ export default function Connections({
   const initialVals = [fontSize, floatRange, radius];
   let width: number;
   let height: number;
+  const three = useThree();
 
   let rotateX = 0;
   let rotateY = 0;
@@ -27,6 +30,7 @@ export default function Connections({
   const connectionRef = useRef(null) as React.MutableRefObject<any>;
   const textRef = useRef(null) as React.MutableRefObject<any>;
   const floatRef = useRef(null) as React.MutableRefObject<any>;
+  const htmlTextRef = useRef(null) as React.MutableRefObject<any>;
 
   useFrame((state) => {
     // rotate the connection about the z axis when we scroll
@@ -44,53 +48,68 @@ export default function Connections({
       Math.cos((index / len) * 2 * Math.PI + rotateX) * radius;
     connectionRef.current.position.y =
       boxRef.current.position.y +
-     Math.sin((index / len) * 2 * Math.PI + rotateY) * radius;
+      Math.sin((index / len) * 2 * Math.PI + rotateY) * radius;
+
+    htmlTextRef.current.position.x = textBoxRef.current.position.x;
+    //+ Math.cos((index / len) * 2 * Math.PI + rotateX) * radius;
+    htmlTextRef.current.position.y = textBoxRef.current.position.y;
+    //+ Math.sin((index / len) * 2 * Math.PI + rotateY) * radius;
 
     // @ts-ignore
     textRef.current.fontSize = fontSize;
     // @ts-ignore
     floatRef.current.floatingRange = [-floatRange, floatRange];
+    // @ts-ignore
+    // console.log(state);
+    console.log(three.camera.position.y);
 
+    
   });
-
+    console.log(three);
+  
   return (
-    <mesh
-      ref={connectionRef}
-      // onPointerOver={(e) => setHover(true)}
-      // onPointerOut={(e) => setHover(false)}
-      // onPointerDown={(e) => setActive(!active)}
-      onPointerUp={(e) => {
-        // link to song
-        const url = `https://www.instagram.com/${connection}`;
-        window.open(url, "_blank");
-      }}
-      // style={{top: page * 100 + "vh"}}
-      // scale={active ? [1.5, 1.5, 1.5] : [1, 1, 1]}
-      //position={[0, boxRef.current.position.y, 0]}
-      //castShadow
-      //receiveShadow
-    >
-      {/* <sphereGeometry args={[0.5, 16, 16]} /> */}
-      {/* <meshStandardMaterial map={texture} /> */}
-      {/* @ts-ignore */}
-      <Float
-        ref={floatRef}
-        rotationIntensity={1}
-        floatIntensity={4}
-        floatingRange={[-floatRange, floatRange]}
+    <>
+      <mesh
+        ref={connectionRef}
+        // onPointerOver={(e) => setHover(true)}
+        // onPointerOut={(e) => setHover(false)}
+        // onPointerDown={(e) => setActive(!active)}
+        onPointerUp={(e) => {
+          // link to song
+          const url = `https://www.instagram.com/${connection}`;
+          // window.open(url, "_blank");
+        }}
+        // style={{top: page * 100 + "vh"}}
+        // scale={active ? [1.5, 1.5, 1.5] : [1, 1, 1]}
+        //position={[0, boxRef.current.position.y, 0]}
+        //castShadow
+        //receiveShadow
       >
+        {/* <sphereGeometry args={[0.5, 16, 16]} /> */}
+        {/* <meshStandardMaterial map={texture} /> */}
         {/* @ts-ignore */}
-        <Text
-          ref={textRef}
-          font={"bangers-v20-latin-regular.woff"}
-          fontSize={fontSize}
-          // ref={textRef}
+        <Float
+          ref={floatRef}
+          rotationIntensity={1}
+          floatIntensity={4}
+          floatingRange={[-floatRange, floatRange]}
         >
-          <meshNormalMaterial />
-          {connection}
-        </Text>
-      </Float>
-      <meshStandardMaterial color={"hotpink"} />
-    </mesh>
+          {/* @ts-ignore */}
+          <Text
+            ref={textRef}
+            font={"bangers-v20-latin-regular.woff"}
+            fontSize={fontSize}
+            // ref={textRef}
+          >
+            <meshNormalMaterial />
+            {connection}
+          </Text>
+        </Float>
+        <meshStandardMaterial color={"hotpink"} />
+      </mesh>
+      <mesh ref={htmlTextRef}>
+        <Html className="opacity-0">{connection}</Html>
+      </mesh>
+    </>
   );
 }

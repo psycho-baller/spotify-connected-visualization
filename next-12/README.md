@@ -11,6 +11,8 @@
 - [X] add the insta names
 - [X] z index (particles should be behind the songs)
 - [X] figure out the font problem
-- [ ] design the page (songs, connections, text, etc...)
-- [ ] phone compatability: have data for different numbers over the project for phone, ipad, desktop
+- [X] design the page (songs, connections, text, etc...)
+- [X] phone compatability: have data for different numbers over the project for phone, ipad, desktop
 - [ ] improve scroll (dynamic scroll speed, etc...)
+- [ ] make it possible for ppl to search(or filter) for their usernames
+ 
