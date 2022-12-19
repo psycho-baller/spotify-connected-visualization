@@ -3,17 +3,19 @@ import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 
 export default function Connections({
+  pos,
   connection,
   boxRef,
   len,
   index,
 }: {
+  pos: number[];
   connection: string;
   boxRef: React.MutableRefObject<any>;
   len: number;
   index: number;
 }) {
-  let connectionPos: number[] = [0,0, 0];
+  let connectionPos: number[] = [...pos];
   let MyWidth = 13.844849711505825;
   let fontSize = 0.4;
   let floatRange = 0.02;
@@ -26,8 +28,8 @@ export default function Connections({
   let rotateX = 0;
   let rotateY = 0;
   const scroll = useScroll();
-  const textRef = useRef();
-  const floatRef = useRef();
+  const textRef = useRef(null) as React.MutableRefObject<any>;
+  const floatRef = useRef(null) as React.MutableRefObject<any>;
 
   useFrame((state) => {
     // rotate the connection about the z axis when we scroll
@@ -41,17 +43,17 @@ export default function Connections({
 
     //                fraction of the circle                   * radius of the circle
     connectionRef.current.position.x =
-      boxRef.current.position.x / boxRef.current.scale.x +
+      boxRef.current.position.x +
       Math.cos((index / len) * 2 * Math.PI + rotateX) * radius;
     connectionRef.current.position.y =
-      boxRef.current.position.y / boxRef.current.scale.y +
-      Math.sin((index / len) * 2 * Math.PI + rotateY) * radius;
-    
-      // @ts-ignore
-      (textRef.current.fontSize = fontSize);
+      boxRef.current.position.y +
+     Math.sin((index / len) * 2 * Math.PI + rotateY) * radius;
+
+    // @ts-ignore
+    textRef.current.fontSize = fontSize;
     // @ts-ignore
     floatRef.current.floatingRange = [-floatRange, floatRange];
-    
+
   });
 
   return (

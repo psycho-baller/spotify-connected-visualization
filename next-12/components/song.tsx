@@ -50,7 +50,7 @@ export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
       ref.current.rotation.y += 0.01;
     }
     // @ts-ignore
-    ref.current.size
+    ref.current.scale.set(boxSize, boxSize, boxSize);
     // @ts-ignore
     textRef.current.fontSize = fontSize;
     // floatRef.current.scale.set(fontSize, fontSize, fontSize);
@@ -59,16 +59,15 @@ export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
     // @ts-ignore
     floatRef.current.floatingRange = [-textRange, textRange];
 
-    pos = [
-      // @ts-ignore
-      ref.current.position.x,
-      // @ts-ignore
-      ref.current.position.y,
-      // @ts-ignore
-      ref.current.position.z,
-    ];
-    
-    
+    // pos = [
+    //   // @ts-ignore
+    //   ref.current.position.x,
+    //   // @ts-ignore
+    //   ref.current.position.y,
+    //   // @ts-ignore
+    //   ref.current.position.z,
+    // ];
+  if (song.connections.instagram[2] == "rami") console.log("box", ref.current.position.y);
 
   });
 
@@ -76,6 +75,7 @@ export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
     ? song.image?.url
     : "https://i.imgur.com/1Q2wG4B.png";
   const texture = useTexture(textureUrl);
+  
   return (
     <group
     // renderOrder={2}
@@ -101,8 +101,7 @@ export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
         <boxGeometry />
         <meshStandardMaterial map={texture} />
       </mesh>
-      <mesh
-      ref={textPosRef} position={posText}>
+      <mesh ref={textPosRef} position={posText}>
         {/* @ts-ignore */}
         <Float
           ref={floatRef}
@@ -122,21 +121,23 @@ export default function Song({ song, pos }: { song: SongType; pos: number[] }) {
             {song.name}
           </Text>
         </Float>
-        {song.connections.instagram.map((connection, index) => {
-          // show all around the song like a circle
-          numOfConnections = song.connections.instagram.length;
-
-          return (
-            <Connection
-              boxRef={ref}
-              connection={connection}
-              len={numOfConnections}
-              index={index}
-              key={index}
-            />
-          );
-        })}
       </mesh>
+
+      {song.connections.instagram.map((connection, index) => {
+        // show all around the song like a circle
+        numOfConnections = song.connections.instagram.length;
+
+        return (
+          <Connection
+            pos={pos}
+            boxRef={ref}
+            connection={connection}
+            len={numOfConnections}
+            index={index}
+            key={index}
+          />
+        );
+      })}
     </group>
   );
 }

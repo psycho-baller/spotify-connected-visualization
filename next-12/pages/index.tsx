@@ -74,10 +74,7 @@ export async function getStaticProps() {
   data[15].connections.instagram = [
     "rundle.floor3",
   ];
-  data[16].connections.instagram = [
-    "naheenkabir",
-    "_ab.i__",
-  ];
+  data[16].connections.instagram = ["naheenkabir", "_ab.i__", "rami"];
   data[17].connections.instagram = [
     "_ab.i__",
     "rundle.floor3",
