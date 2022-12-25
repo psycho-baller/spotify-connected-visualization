@@ -31,8 +31,10 @@ export default function Connections({
   const textRef = useRef(null) as React.MutableRefObject<any>;
   const floatRef = useRef(null) as React.MutableRefObject<any>;
   const htmlTextRef = useRef(null) as React.MutableRefObject<any>;
+  const textR = useRef(null) as React.MutableRefObject<any>;
 
   useFrame((state) => {
+    
     // rotate the connection about the z axis when we scroll
     rotateX = -scroll.offset * 100;
     rotateY = -scroll.offset * 100;
@@ -61,14 +63,30 @@ export default function Connections({
     floatRef.current.floatingRange = [-floatRange, floatRange];
     // @ts-ignore
     // console.log(state);
-    console.log(three.camera.position.y);
+    // console.log(three.camera.position.y);
 
     
   });
-    console.log(three);
   
   return (
     <>
+      <mesh
+        onClick={() => {
+          var count  = 100
+          while (count > 0) {
+          // @ts-ignore
+          textR.current.scrollIntoView({
+            behavior: "auto",
+            block: "center",
+            inline: "center",
+          });
+          count -= 1;
+          }
+        }}
+      >
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial color="hotpink" />
+      </mesh>
       <mesh
         ref={connectionRef}
         // onPointerOver={(e) => setHover(true)}
@@ -77,8 +95,10 @@ export default function Connections({
         onPointerUp={(e) => {
           // link to song
           const url = `https://www.instagram.com/${connection}`;
+
           // window.open(url, "_blank");
         }}
+
         // style={{top: page * 100 + "vh"}}
         // scale={active ? [1.5, 1.5, 1.5] : [1, 1, 1]}
         //position={[0, boxRef.current.position.y, 0]}
@@ -108,7 +128,9 @@ export default function Connections({
         <meshStandardMaterial color={"hotpink"} />
       </mesh>
       <mesh ref={htmlTextRef}>
-        <Html className="opacity-0">{connection}</Html>
+        <Html ref={textR} className="opacity-0">
+          {connection}
+        </Html>
       </mesh>
     </>
   );

@@ -14,13 +14,22 @@ export default function Experience({ data }: { data: SongType[] }) {
       {/* <pointLight position={[10, 10, 10]} intensity={0.1} /> */}
       {/* @ts-ignore */}
       {/* <PerspectiveCamera ref={cameraRef} makeDefault position={[0, 0, 10]} /> */}
+
       <ScrollControls
-        pages={data.length *1.5}
-        // damping={}
-        infinite={false} // Can also scroll infinitely (default: false)
+      // @ts-ignore
+        // @ts-ignore
+        pages={data.length * 1.5}
+        // damping={4}
+        // distance={1}
+        // infinite={false} // Can also scroll infinitely (default: false)
+        enabled={true}
       >
-        <Scroll>
-          <Songs data={data} />
+        <Scroll
+        >
+          <Songs
+            data={data}
+            // scrollRef={scrollRef}
+          />
           <Particles />
         </Scroll>
       </ScrollControls>
