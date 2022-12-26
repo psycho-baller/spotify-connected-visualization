@@ -1,6 +1,8 @@
 import { Float, useScroll, Text, Html } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
+import { toASCII } from "punycode";
 import { useRef } from "react";
+import { MatchText } from "react-ctrl-f";
 
 export default function Connections({
   textBoxRef,
@@ -72,15 +74,15 @@ export default function Connections({
     <>
       <mesh
         onClick={() => {
-          var count  = 100
+          var count = 100;
           while (count > 0) {
-          // @ts-ignore
-          textR.current.scrollIntoView({
-            behavior: "auto",
-            block: "center",
-            inline: "center",
-          });
-          count -= 1;
+            // @ts-ignore
+            textR.current.scrollIntoView({
+              behavior: "auto",
+              block: "center",
+              inline: "center",
+            });
+            count -= 1;
           }
         }}
       >
@@ -128,8 +130,8 @@ export default function Connections({
         <meshStandardMaterial color={"hotpink"} />
       </mesh>
       <mesh ref={htmlTextRef}>
-        <Html ref={textR} className="opacity-0">
-          {connection}
+        <Html ref={textR} className={`opacity-0 ${connection}`} >
+            {connection}
         </Html>
       </mesh>
     </>

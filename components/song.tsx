@@ -77,6 +77,7 @@ export default function Song({ song, index }: { song: SongType; index: number })
     // renderOrder={2}
     >
       <mesh
+      //list of all the instagram usernames
         ref={ref}
         onPointerOver={(e) => {
           setHover(true);
