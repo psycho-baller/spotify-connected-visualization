@@ -63,7 +63,7 @@ export default function Song({ song, index }: { song: SongType; index: number })
     // } else
     ref.current.position.y = -(index * boxSeparation);
     // @ts-ignore
-    htmlTextRef.current.position.y = -(index * boxSeparation) * 2;
+    htmlTextRef.current.position.y = -(index * boxSeparation) * 2.01;
     // @ts-ignore
   });
 
@@ -77,7 +77,7 @@ export default function Song({ song, index }: { song: SongType; index: number })
     // renderOrder={2}
     >
       <mesh
-      //list of all the instagram usernames
+        //list of all the instagram usernames
         ref={ref}
         onPointerOver={(e) => {
           setHover(true);
@@ -123,19 +123,14 @@ export default function Song({ song, index }: { song: SongType; index: number })
         </Float>
       </mesh>
       <mesh ref={htmlTextRef}>
-        <Html
-        className="opacity-0"
-        >
-          {song.name}
-        </Html>
+        <Html className={`opacity-0 ${song.name}`}>{song.name}</Html>
       </mesh>
       {song.connections.instagram.map((connection, index) => {
         // show all around the song like a circle
         numOfConnections = song.connections.instagram.length;
-
         return (
           <Connection
-          textBoxRef={htmlTextRef}
+            textBoxRef={htmlTextRef}
             boxRef={ref}
             connection={connection}
             len={numOfConnections}

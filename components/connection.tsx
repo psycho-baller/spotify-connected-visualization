@@ -1,8 +1,6 @@
 import { Float, useScroll, Text, Html } from "@react-three/drei";
-import { useFrame, useThree } from "@react-three/fiber";
-import { toASCII } from "punycode";
+import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
-import { MatchText } from "react-ctrl-f";
 
 export default function Connections({
   textBoxRef,
@@ -23,23 +21,17 @@ export default function Connections({
   let radius = 4;
   const initialVals = [fontSize, floatRange, radius];
   let width: number;
-  let height: number;
-  const three = useThree();
+  let rotate: number
 
-  let rotateX = 0;
-  let rotateY = 0;
   const scroll = useScroll();
   const connectionRef = useRef(null) as React.MutableRefObject<any>;
   const textRef = useRef(null) as React.MutableRefObject<any>;
   const floatRef = useRef(null) as React.MutableRefObject<any>;
   const htmlTextRef = useRef(null) as React.MutableRefObject<any>;
-  const textR = useRef(null) as React.MutableRefObject<any>;
 
   useFrame((state) => {
-    
     // rotate the connection about the z axis when we scroll
-    rotateX = -scroll.offset * 100;
-    rotateY = -scroll.offset * 100;
+    rotate = -scroll.offset * 100;
     width = state.viewport.width;
 
     fontSize = initialVals[0] * (width / MyWidth);
@@ -49,46 +41,22 @@ export default function Connections({
     //                fraction of the circle                   * radius of the circle
     connectionRef.current.position.x =
       boxRef.current.position.x +
-      Math.cos((index / len) * 2 * Math.PI + rotateX) * radius;
+      Math.cos((index / len) * 2 * Math.PI + rotate) * radius;
     connectionRef.current.position.y =
       boxRef.current.position.y +
-      Math.sin((index / len) * 2 * Math.PI + rotateY) * radius;
+      Math.sin((index / len) * 2 * Math.PI + rotate) * radius;
 
     htmlTextRef.current.position.x = textBoxRef.current.position.x;
     //+ Math.cos((index / len) * 2 * Math.PI + rotateX) * radius;
     htmlTextRef.current.position.y = textBoxRef.current.position.y;
     //+ Math.sin((index / len) * 2 * Math.PI + rotateY) * radius;
 
-    // @ts-ignore
     textRef.current.fontSize = fontSize;
-    // @ts-ignore
-    floatRef.current.floatingRange = [-floatRange, floatRange];
-    // @ts-ignore
-    // console.log(state);
-    // console.log(three.camera.position.y);
-
-    
+    floatRef.current.floatingRange = [-floatRange, floatRange]
   });
   
   return (
     <>
-      <mesh
-        onClick={() => {
-          var count = 100;
-          while (count > 0) {
-            // @ts-ignore
-            textR.current.scrollIntoView({
-              behavior: "auto",
-              block: "center",
-              inline: "center",
-            });
-            count -= 1;
-          }
-        }}
-      >
-        <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color="hotpink" />
-      </mesh>
       <mesh
         ref={connectionRef}
         // onPointerOver={(e) => setHover(true)}
@@ -97,8 +65,7 @@ export default function Connections({
         onPointerUp={(e) => {
           // link to song
           const url = `https://www.instagram.com/${connection}`;
-
-          // window.open(url, "_blank");
+          window.open(url, "_blank");
         }}
 
         // style={{top: page * 100 + "vh"}}
@@ -130,7 +97,7 @@ export default function Connections({
         <meshStandardMaterial color={"hotpink"} />
       </mesh>
       <mesh ref={htmlTextRef}>
-        <Html ref={textR} className={`opacity-0 ${connection}`} >
+        <Html className={`opacity-0 ${connection}`} >
             {connection}
         </Html>
       </mesh>
