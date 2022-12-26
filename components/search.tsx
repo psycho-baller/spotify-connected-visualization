@@ -5,50 +5,81 @@ export const SearchComponent = () => {
   //   const { searchValue, activeCount, totalCount } = useContext(SearchContext);
   //   const { onSearchChange, onPrev, onNext } = useContext(SearchEventContext);
   const [searchValue, setSearchValue] = useState("");
-    const [classNames, setClassNames] = useState() as [HTMLCollectionOf<Element>, any]
+  const [classNames, setClassNames] = useState() as [
+    HTMLCollectionOf<Element>,
+    any
+  ];
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // get classNames that match the searchValue
-    // classNames = 
-          console.log(classNames);
+    // classNames =
+    console.log(classNames);
 
     if (classNames) {
-        // scroll to the first match
-        
-        var count = 10;
-          while (count > 0) {
-            
-            setTimeout(() => {
+      // scroll to the first match
+
+      classNames[0].scrollIntoView({
+        behavior: "auto",
+        block: "center",
+        inline: "center",
+      });
+      setTimeout(() => {
+        classNames[0].scrollIntoView({
+          behavior: "auto",
+          block: "center",
+          inline: "center",
+        });
+        setTimeout(() => {
+          classNames[0].scrollIntoView({
+            behavior: "auto",
+            block: "center",
+            inline: "center",
+          });
+          setTimeout(() => {
             classNames[0].scrollIntoView({
               behavior: "auto",
               block: "center",
               inline: "center",
             });
-            count -= 1;
-
-            }
-            , 100);
-            
-          }
+            setTimeout(() => {
+              classNames[0].scrollIntoView({
+                behavior: "auto",
+                block: "center",
+                inline: "center",
+              });
+              setTimeout(() => {
+                classNames[0].scrollIntoView({
+                  behavior: "smooth",
+                  block: "center",
+                  inline: "center",
+                });
+              }, 100);
+            }, 100);
+          }, 100);
+        }, 100);
+      }, 200);
+      
+      
+      
+      
     }
-    
+
     // loop through classNames and add a class to them
     // for (let i = 0; i < classNames.length; i++) {
     //     console.log(classNames[i]);
     // }
-        
-
-
   };
   return (
-    <form onSubmit={handleSubmit} style={{ padding: 16, zIndex: 16695055, position: "fixed" }}>
+    <form
+      onSubmit={handleSubmit}
+      style={{ padding: 16, zIndex: 16695055, position: "fixed" }}
+    >
       <input
-        style={{ width: 200, marginRight: "12px", height: "24px" }}
+        style={{ width: 100, marginRight: "12px", height: "24px" }}
         value={searchValue}
         onChange={(e) => {
           setSearchValue(e.target.value);
           setClassNames(document.getElementsByClassName(e.target.value));
-          
         }}
       />
       <button
