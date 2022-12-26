@@ -123,9 +123,9 @@ export async function getStaticProps() {
     "nicholas_bonato",
   ];
   data[46].connections.instagram = ["youssefxclusive", "m_abuali_s"];
-  // data[47].connections.instagram = [
-  //   "",
-  // ];
+  data[50].connections.instagram = [
+    "duppy_03",
+  ];
 
   return {
     props: {
