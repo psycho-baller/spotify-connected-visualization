@@ -23,7 +23,6 @@ export default function Home({ data }: { data: SongType[] }) {
   //   },
   //   []
   // );
-  const searchVal = ""
   return (
     <>
       <Search />

@@ -1,5 +1,4 @@
-import { useContext, useState } from "react";
-import { SearchContext, SearchEventContext } from "react-ctrl-f";
+import { useState } from "react";
 
 export const SearchComponent = () => {
   //   const { searchValue, activeCount, totalCount } = useContext(SearchContext);

@@ -19,52 +19,45 @@ export default function Song({ song, index }: { song: SongType; index: number })
   const [geometry, setGeometry] = useState("boxGeometry");
   const [args, setArgs] = useState([1, 1, 1]);
   const ref = useRef() as React.MutableRefObject<any>;
-  const floatRef = useRef();
-  const textPosRef = useRef();
-  const textRef = useRef();
-  const htmlTextRef = useRef();
+  const floatRef = useRef(null) as React.MutableRefObject<any>;
+  const textPosRef = useRef(null) as React.MutableRefObject<any>;
+  const textRef = useRef(null) as React.MutableRefObject<any>;
+  const htmlTextRef = useRef(null) as React.MutableRefObject<any>;
 
   let MyWidth = 13.844849711505825;
   let textRange = 0.025;
   let boxSize = 2;
   let fontSize = 0.6;
   let textYOffset = 1.6;
-  const initialVals = [textRange, boxSize, fontSize, textYOffset];
+  let boxSeparation = 8.5;
+  const initialVals = [textRange, boxSize, fontSize, textYOffset, boxSeparation];
   let width: number;
-  let boxSeparation: number;
-
 
   let numOfConnections: number = 0;
 
   useFrame((state) => {
     // get the orientation of the device
+    // TODO: can be optimized
     width = state.viewport.width;
     fontSize = (width / MyWidth) * initialVals[2];
     textRange = (width / MyWidth) * initialVals[0];
     boxSize = (width / MyWidth) * initialVals[1];
     textYOffset = (width / MyWidth) * initialVals[3];
+    boxSeparation = (width / MyWidth) * initialVals[4];
 
     if (hovered) {
-      // @ts-ignore
       ref.current.rotation.y += 0.01;
     }
-    // @ts-ignore
     ref.current.scale.set(boxSize, boxSize, boxSize);
-    // @ts-ignore
     textRef.current.fontSize = fontSize;
-    // @ts-ignore
     textPosRef.current.position.y = ref.current.position.y + textYOffset;
-    // @ts-ignore
     floatRef.current.floatingRange = [-textRange, textRange];
 
-    boxSeparation = (width / MyWidth) * 8.5;
     // if (width < 5) {
     // ref.current.position.y = -(index * boxSeparation) + 1;
     // } else
     ref.current.position.y = -(index * boxSeparation);
-    // @ts-ignore
     htmlTextRef.current.position.y = -(index * boxSeparation) * 2.01;
-    // @ts-ignore
   });
 
   const textureUrl = song.image?.url
