@@ -79,7 +79,7 @@ export const SearchComponent = () => {
         value={searchValue}
         onChange={(e) => {
           setSearchValue(e.target.value);
-          setClassNames(document.getElementsByClassName(e.target.value));
+          setClassNames(document.getElementsByClassName(e.target.value.toLowerCase()));
         }}
       />
       <button
