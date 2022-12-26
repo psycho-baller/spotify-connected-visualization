@@ -35,3 +35,6 @@ a {
 .opacity0 {
   opacity: 0;
 }
+.fixed {
+  position: fixed!important;
+}

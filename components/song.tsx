@@ -37,13 +37,19 @@ export default function Song({ song, index }: { song: SongType; index: number })
 
   useFrame((state) => {
     // get the orientation of the device
-    // TODO: can be optimized
+    // TODO: can be optimized with useThree
     width = state.viewport.width;
     fontSize = (width / MyWidth) * initialVals[2];
     textRange = (width / MyWidth) * initialVals[0];
     boxSize = (width / MyWidth) * initialVals[1];
     textYOffset = (width / MyWidth) * initialVals[3];
     boxSeparation = (width / MyWidth) * initialVals[4];
+
+    // if (width < 5) {
+    // ref.current.position.y = -(index * boxSeparation) + 1;
+    // } else
+    ref.current.position.y = -(index * boxSeparation);
+    htmlTextRef.current.position.y = -(index * boxSeparation) * 2.01;
 
     if (hovered) {
       ref.current.rotation.y += 0.01;
@@ -52,12 +58,6 @@ export default function Song({ song, index }: { song: SongType; index: number })
     textRef.current.fontSize = fontSize;
     textPosRef.current.position.y = ref.current.position.y + textYOffset;
     floatRef.current.floatingRange = [-textRange, textRange];
-
-    // if (width < 5) {
-    // ref.current.position.y = -(index * boxSeparation) + 1;
-    // } else
-    ref.current.position.y = -(index * boxSeparation);
-    htmlTextRef.current.position.y = -(index * boxSeparation) * 2.01;
   });
 
   const textureUrl = song.image?.url
@@ -116,7 +116,11 @@ export default function Song({ song, index }: { song: SongType; index: number })
         </Float>
       </mesh>
       <mesh ref={htmlTextRef}>
-        <Html className={`opacity-0 ${song.name}`}>{song.name}</Html>
+        <Html
+          className={`opacity-0 ${song.name}`}
+        >
+          {song.name}
+        </Html>
       </mesh>
       {song.connections.instagram.map((connection, index) => {
         // show all around the song like a circle
