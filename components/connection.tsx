@@ -97,7 +97,9 @@ export default function Connections({
         <meshStandardMaterial color={"hotpink"} />
       </mesh>
       <mesh ref={htmlTextRef}>
-        <Html className={`opacity-0 ${connection}`} >
+        <Html 
+        // className={`opacity-0 ${connection}`} 
+        >
             {connection}
         </Html>
       </mesh>

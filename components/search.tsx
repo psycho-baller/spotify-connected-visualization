@@ -1,67 +1,400 @@
 import { useState } from "react";
 
 export const SearchComponent = () => {
-  //   const { searchValue, activeCount, totalCount } = useContext(SearchContext);
-  //   const { onSearchChange, onPrev, onNext } = useContext(SearchEventContext);
   const [searchValue, setSearchValue] = useState("");
   const [classNames, setClassNames] = useState() as [
     HTMLCollectionOf<Element>,
     any
   ];
+  const [totalCount, setTotalCount] = useState(0);
+  const [currentCount, setCurrentCount] = useState(0);
+
+  let index = 0;
+  // let previousScrollTop = 0;
+  // let currentScrollTop = 0;
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // get classNames that match the searchValue
     // classNames =
     console.log(classNames);
+    index = currentCount
 
-    if (classNames) {
+    if (classNames[index]) {
+      setCurrentCount((curr) => curr + 1);
       // scroll to the first match
-
-      classNames[0].scrollIntoView({
-        behavior: "auto",
-        block: "center",
-        inline: "center",
-      });
-      setTimeout(() => {
-        classNames[0].scrollIntoView({
+      let loop = setInterval(() => {
+        // currentScrollTop = window.innerHeight;
+        // if (currentScrollTop > previousScrollTop) {
+        //   console.log("Scrolling down");
+        // } else {
+        //   console.log("Scrolling up");
+        // }
+        // previousScrollTop = currentScrollTop;
+        classNames[index].scrollIntoView({
           behavior: "auto",
           block: "center",
-          inline: "center",
+          // inline: "center",
         });
-        setTimeout(() => {
-          classNames[0].scrollIntoView({
-            behavior: "auto",
-            block: "center",
-            inline: "center",
-          });
-          setTimeout(() => {
-            classNames[0].scrollIntoView({
-              behavior: "auto",
-              block: "center",
-              inline: "center",
-            });
-            setTimeout(() => {
-              classNames[0].scrollIntoView({
-                behavior: "auto",
-                block: "center",
-                inline: "center",
-              });
-              setTimeout(() => {
-                classNames[0].scrollIntoView({
-                  behavior: "smooth",
-                  block: "center",
-                  inline: "center",
-                });
-              }, 100);
-            }, 100);
-          }, 100);
-        }, 100);
+        if (
+          classNames[index].getBoundingClientRect().top >=
+            window.innerHeight * 0.4 &&
+          classNames[index].getBoundingClientRect().bottom <=
+            window.innerHeight * 0.6
+        ) {
+          // window.scrollTo(0, -100);
+
+          clearInterval(loop);
+        }
       }, 200);
-      
-      
-      
-      
     }
+
+    //   setTimeout(() => {
+    //     classNames[currentCount].scrollIntoView({
+    //       behavior: "auto",
+    //       block: "center",
+    //       inline: "center",
+    //     });
+    //     setTimeout(() => {
+    //       classNames[currentCount].scrollIntoView({
+    //         behavior: "auto",
+    //         block: "center",
+    //         inline: "center",
+    //       });
+    //       setTimeout(() => {
+    //         classNames[currentCount].scrollIntoView({
+    //           behavior: "auto",
+    //           block: "center",
+    //           inline: "center",
+    //         });
+    //         setTimeout(() => {
+    //           classNames[currentCount].scrollIntoView({
+    //             behavior: "auto",
+    //             block: "center",
+    //             inline: "center",
+    //           });
+    //           setTimeout(() => {
+    //             classNames[currentCount].scrollIntoView({
+    //               behavior: "auto",
+    //               block: "center",
+    //               inline: "center",
+    //             });
+    //             setTimeout(() => {
+    //               classNames[currentCount].scrollIntoView({
+    //                 behavior: "auto",
+    //                 block: "center",
+    //                 inline: "center",
+    //               });
+    //               setTimeout(() => {
+    //                 classNames[currentCount].scrollIntoView({
+    //                   behavior: "auto",
+    //                   block: "center",
+    //                   inline: "center",
+    //                 });
+    //                 setTimeout(() => {
+    //                   classNames[currentCount].scrollIntoView({
+    //                     behavior: "auto",
+    //                     block: "center",
+    //                     inline: "center",
+    //                   });
+    //                   setTimeout(() => {
+    //                     classNames[currentCount].scrollIntoView({
+    //                       behavior: "auto",
+    //                       block: "center",
+    //                       inline: "center",
+    //                     });
+    //                     setTimeout(() => {
+    //                       classNames[currentCount].scrollIntoView({
+    //                         behavior: "auto",
+    //                         block: "center",
+    //                         inline: "center",
+    //                       });
+    //                       setTimeout(() => {
+    //                         classNames[currentCount].scrollIntoView({
+    //                           behavior: "auto",
+    //                           block: "center",
+    //                           inline: "center",
+    //                         });
+    //                         setTimeout(() => {
+    //                           classNames[currentCount].scrollIntoView({
+    //                             behavior: "auto",
+    //                             block: "center",
+    //                             inline: "center",
+    //                           });
+    //                           setTimeout(() => {
+    //                             classNames[currentCount].scrollIntoView({
+    //                               behavior: "auto",
+    //                               block: "center",
+    //                               inline: "center",
+    //                             });
+    //                             setTimeout(() => {
+    //                               classNames[currentCount].scrollIntoView({
+    //                                 behavior: "auto",
+    //                                 block: "center",
+    //                                 inline: "center",
+    //                               });
+    //                               setTimeout(() => {
+    //                                 classNames[currentCount].scrollIntoView({
+    //                                   behavior: "auto",
+    //                                   block: "center",
+    //                                   inline: "center",
+    //                                 });
+    //                                 setTimeout(() => {
+    //                                   classNames[currentCount].scrollIntoView({
+    //                                     behavior: "auto",
+    //                                     block: "center",
+    //                                     inline: "center",
+    //                                   });
+    //                                   setTimeout(() => {
+    //                                     classNames[currentCount].scrollIntoView({
+    //                                       behavior: "auto",
+    //                                       block: "center",
+    //                                       inline: "center",
+    //                                     });
+    //                                     setTimeout(() => {
+    //                                       classNames[currentCount].scrollIntoView({
+    //                                         behavior: "auto",
+    //                                         block: "center",
+    //                                         inline: "center",
+    //                                       });
+    //                                       setTimeout(() => {
+    //                                         classNames[currentCount].scrollIntoView({
+    //                                           behavior: "auto",
+    //                                           block: "center",
+    //                                           inline: "center",
+    //                                         });
+    //                                         setTimeout(() => {
+    //                                           classNames[currentCount].scrollIntoView({
+    //                                             behavior: "auto",
+    //                                             block: "center",
+    //                                             inline: "center",
+    //                                           });
+    //                                           setTimeout(() => {
+    //                                             classNames[currentCount].scrollIntoView({
+    //                                               behavior: "auto",
+    //                                               block: "center",
+    //                                               inline: "center",
+    //                                             });
+    //                                             setTimeout(() => {
+    //                                               classNames[currentCount].scrollIntoView({
+    //                                                 behavior: "auto",
+    //                                                 block: "center",
+    //                                                 inline: "center",
+    //                                               });
+    //                                               // 100 more
+    //                                               setTimeout(() => {
+    //                                                 classNames[currentCount].scrollIntoView(
+    //                                                   {
+    //                                                     behavior: "auto",
+    //                                                     block: "center",
+    //                                                     inline: "center",
+    //                                                   }
+    //                                                 );
+    //                                                 setTimeout(() => {
+    //                                                   classNames[currentCount].scrollIntoView(
+    //                                                     {
+    //                                                       behavior: "auto",
+    //                                                       block: "center",
+    //                                                       inline: "center",
+    //                                                     }
+    //                                                   );
+    //                                                   setTimeout(() => {
+    //                                                     classNames[currentCount].scrollIntoView(
+    //                                                       {
+    //                                                         behavior: "auto",
+    //                                                         block: "center",
+    //                                                         inline: "center",
+    //                                                       }
+    //                                                     );
+    //                                                     setTimeout(() => {
+    //                                                       classNames[currentCount].scrollIntoView(
+    //                                                         {
+    //                                                           behavior: "auto",
+    //                                                           block: "center",
+    //                                                           inline: "center",
+    //                                                         }
+    //                                                       );
+    //                                                       setTimeout(() => {
+    //                                                         classNames[currentCount].scrollIntoView(
+    //                                                           {
+    //                                                             behavior:
+    //                                                               "auto",
+    //                                                             block: "center",
+    //                                                             inline:
+    //                                                               "center",
+    //                                                           }
+    //                                                         );
+    //                                                         setTimeout(() => {
+    //                                                           classNames[currentCount].scrollIntoView(
+    //                                                             {
+    //                                                               behavior:
+    //                                                                 "auto",
+    //                                                               block:
+    //                                                                 "center",
+    //                                                               inline:
+    //                                                                 "center",
+    //                                                             }
+    //                                                           );
+    //                                                           setTimeout(() => {
+    //                                                             classNames[currentCount].scrollIntoView(
+    //                                                               {
+    //                                                                 behavior:
+    //                                                                   "auto",
+    //                                                                 block:
+    //                                                                   "center",
+    //                                                                 inline:
+    //                                                                   "center",
+    //                                                               }
+    //                                                             );
+    //                                                             setTimeout(
+    //                                                               () => {
+    //                                                                 classNames[currentCount].scrollIntoView(
+    //                                                                   {
+    //                                                                     behavior:
+    //                                                                       "auto",
+    //                                                                     block:
+    //                                                                       "center",
+    //                                                                     inline:
+    //                                                                       "center",
+    //                                                                   }
+    //                                                                 );
+    //                                                                 setTimeout(
+    //                                                                   () => {
+    //                                                                     classNames[currentCount].scrollIntoView(
+    //                                                                       {
+    //                                                                         behavior:
+    //                                                                           "auto",
+    //                                                                         block:
+    //                                                                           "center",
+    //                                                                         inline:
+    //                                                                           "center",
+    //                                                                       }
+    //                                                                     );
+    //                                                                     setTimeout(
+    //                                                                       () => {
+    //                                                                         classNames[currentCount].scrollIntoView(
+    //                                                                           {
+    //                                                                             behavior:
+    //                                                                               "auto",
+    //                                                                             block:
+    //                                                                               "center",
+    //                                                                             inline:
+    //                                                                               "center",
+    //                                                                           }
+    //                                                                         );
+    //                                                                         setTimeout(
+    //                                                                           () => {
+    //                                                                             classNames[currentCount].scrollIntoView(
+    //                                                                               {
+    //                                                                                 behavior:
+    //                                                                                   "auto",
+    //                                                                                 block:
+    //                                                                                   "center",
+    //                                                                                 inline:
+    //                                                                                   "center",
+    //                                                                               }
+    //                                                                             );
+    //                                                                             setTimeout(
+    //                                                                               () => {
+    //                                                                                 classNames[currentCount].scrollIntoView(
+    //                                                                                   {
+    //                                                                                     behavior:
+    //                                                                                       "auto",
+    //                                                                                     block:
+    //                                                                                       "center",
+    //                                                                                     inline:
+    //                                                                                       "center",
+    //                                                                                   }
+    //                                                                                 );
+    //                                                                                 setTimeout(
+    //                                                                                   () => {
+    //                                                                                     classNames[currentCount].scrollIntoView(
+    //                                                                                       {
+    //                                                                                         behavior:
+    //                                                                                           "auto",
+    //                                                                                         block:
+    //                                                                                           "center",
+    //                                                                                         inline:
+    //                                                                                           "center",
+    //                                                                                       }
+    //                                                                                     );
+    //                                                                                     setTimeout(
+    //                                                                                       () => {
+    //                                                                                         classNames[currentCount].scrollIntoView(
+    //                                                                                           {
+    //                                                                                             behavior:
+    //                                                                                               "auto",
+    //                                                                                             block:
+    //                                                                                               "center",
+    //                                                                                             inline:
+    //                                                                                               "center",
+    //                                                                                           }
+    //                                                                                         );
+    //                                                                                         setTimeout(
+    //                                                                                           () => {
+    //                                                                                             classNames[currentCount].scrollIntoView(
+    //                                                                                               {
+    //                                                                                                 behavior:
+    //                                                                                                   "auto",
+    //                                                                                                 block:
+    //                                                                                                   "center",
+    //                                                                                                 inline:
+    //                                                                                                   "center",
+    //                                                                                               }
+    //                                                                                             );
+    //                                                                                           },
+    //                                                                                           100
+    //                                                                                         );
+    //                                                                                       },
+    //                                                                                       100
+    //                                                                                     );
+    //                                                                                   },
+    //                                                                                   100
+    //                                                                                 );
+    //                                                                               },
+    //                                                                               100
+    //                                                                             );
+    //                                                                           },
+    //                                                                           100
+    //                                                                         );
+    //                                                                       },
+    //                                                                       100
+    //                                                                     );
+    //                                                                   },
+    //                                                                   100
+    //                                                                 );
+    //                                                               },
+    //                                                               100
+    //                                                             );
+    //                                                           }, 100);
+    //                                                         }, 100);
+    //                                                       }, 100);
+    //                                                     }, 100);
+    //                                                   }, 100);
+    //                                                 }, 100);
+    //                                               }, 100);
+    //                                             }, 100);
+    //                                           }, 100);
+    //                                         }, 100);
+    //                                       }, 100);
+    //                                     }, 100);
+    //                                   }, 100);
+    //                                 }, 100);
+    //                               }, 100);
+    //                             }, 100);
+    //                           }, 100);
+    //                         }, 100);
+    //                       }, 100);
+    //                     }, 100);
+    //                   }, 100);
+    //                 }, 100);
+    //               }, 100);
+    //             }, 100);
+    //           }, 100);
+    //         }, 100);
+    //       }, 100);
+    //     }, 200);
+    //   }, 200);
+    // }
 
     // loop through classNames and add a class to them
     // for (let i = 0; i < classNames.length; i++) {
@@ -71,14 +404,18 @@ export const SearchComponent = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      style={{ padding: 16, zIndex: 16695055, position: "fixed" }}
+      style={{ padding: 16, zIndex: 166910055, position: "fixed" }}
     >
       <input
         style={{ width: 100, marginRight: "12px", height: "24px" }}
         value={searchValue}
         onChange={(e) => {
           setSearchValue(e.target.value);
-          setClassNames(document.getElementsByClassName(e.target.value.toLowerCase()));
+          setClassNames(
+            document.getElementsByClassName(e.target.value.toLowerCase())
+          );
+          setTotalCount(document.getElementsByClassName(e.target.value).length);
+          setCurrentCount(0);
         }}
       />
       <button
@@ -89,7 +426,7 @@ export const SearchComponent = () => {
         Prev
       </button>
       <span style={{ padding: "0px 12px" }}>
-        {/* {activeCount}/{totalCount} */}
+        {currentCount}/{totalCount}
       </span>
       <button
         style={{ height: "28px" }}
