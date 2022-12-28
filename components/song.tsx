@@ -50,7 +50,7 @@ export default function Song({ song, index }: { song: SongType; index: number })
     // } else
     ref.current.position.y = -(index * boxSeparation);
     htmlTextRef.current.position.y =
-      ref.current.position.y * (2.025 + ((width / MyWidth) * 0.025));  //-(index * boxSeparation) * (2.05 + (width / MyWidth) * 0.05);
+      ref.current.position.y * (2.05 + ((width / MyWidth) * 0.05));  //-(index * boxSeparation) * (2.05 + (width / MyWidth) * 0.05);
 
     if (hovered) {
       ref.current.rotation.y += 0.01;

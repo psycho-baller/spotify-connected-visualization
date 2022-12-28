@@ -48,7 +48,7 @@ export const SearchComponent = () => {
           //   window.innerHeight * 0.4 &&
           // classNames[index].getBoundingClientRect().bottom <=
           //   window.innerHeight * 0.6
-          counter >= 5
+          counter >= 7
         ) {
           // window.scrollTo(0, -100);
 
