@@ -21,6 +21,11 @@ export const SearchComponent = () => {
     index = currentCount
 
     if (classNames[index]) {
+      classNames[index].scrollIntoView({
+        behavior: "auto",
+        block: "center",
+        // inline: "center",
+      });
       setCurrentCount((curr) => curr + 1);
       counter = 0;
       // scroll to the first match
@@ -49,7 +54,7 @@ export const SearchComponent = () => {
 
           clearInterval(loop);
         }
-      }, 200);
+      }, 80);
     }
 
     //   setTimeout(() => {

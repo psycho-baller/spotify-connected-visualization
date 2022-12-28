@@ -1,5 +1,5 @@
 import { ScrollControls, Scroll } from "@react-three/drei";
-import { useFrame, useThree  } from "@react-three/fiber";
+import { useThree  } from "@react-three/fiber";
 import Songs from "../components/songs";
 import { SongType } from "../lib/types";
 import Particles from "./particles";
@@ -7,14 +7,11 @@ import Particles from "./particles";
 
 export default function Experience({ data }: { data: SongType[] }) { 
 
-  const MyWidth = 13.844849711505825;
+  // const MyWidth = 13.844849711505825;
   const { viewport }  = useThree();
   const { width } = viewport;
   console.log(width);
   
-  useFrame((state) => {
-    // ref.current.position.y = state.viewport.height / 2;
-  });
   return (
     <>
       <ambientLight />
@@ -38,7 +35,7 @@ export default function Experience({ data }: { data: SongType[] }) {
           />
           <Particles />
         </Scroll>
-        <Scroll html>
+        {/* <Scroll html>
             {data.map((song: SongType, index: number) => {
               const top = 50 + (index*(110.5 * (width / MyWidth)))
               return (
@@ -63,7 +60,7 @@ export default function Experience({ data }: { data: SongType[] }) {
               );
             })
             }
-        </Scroll>
+        </Scroll> */}
       </ScrollControls>
     </>
   );
