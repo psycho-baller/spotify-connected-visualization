@@ -47,9 +47,9 @@ export default function Connections({
       Math.sin((index / len) * 2 * Math.PI + rotate) * radius;
 
     htmlTextRef.current.position.x = textBoxRef.current.position.x;
-    //+ Math.cos((index / len) * 2 * Math.PI + rotateX) * radius;
+    // + Math.cos((index / len) * 2 * Math.PI + rotateX) * radius;
     htmlTextRef.current.position.y = textBoxRef.current.position.y;
-    //+ Math.sin((index / len) * 2 * Math.PI + rotateY) * radius;
+    // + Math.sin((index / len) * 2 * Math.PI + rotateY) * radius;
 
     textRef.current.fontSize = fontSize;
     floatRef.current.floatingRange = [-floatRange, floatRange]
@@ -97,11 +97,7 @@ export default function Connections({
         <meshStandardMaterial color={"hotpink"} />
       </mesh>
       <mesh ref={htmlTextRef}>
-        <Html 
-        // className={`opacity-0 ${connection}`} 
-        >
-            {connection}
-        </Html>
+        <Html className={`opacity-0 ${connection}`}>{connection}</Html>
       </mesh>
     </>
   );

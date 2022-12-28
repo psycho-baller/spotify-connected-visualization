@@ -10,6 +10,7 @@ export const SearchComponent = () => {
   const [currentCount, setCurrentCount] = useState(0);
 
   let index = 0;
+  let counter: number;
   // let previousScrollTop = 0;
   // let currentScrollTop = 0;
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -21,6 +22,7 @@ export const SearchComponent = () => {
 
     if (classNames[index]) {
       setCurrentCount((curr) => curr + 1);
+      counter = 0;
       // scroll to the first match
       let loop = setInterval(() => {
         // currentScrollTop = window.innerHeight;
@@ -35,11 +37,13 @@ export const SearchComponent = () => {
           block: "center",
           // inline: "center",
         });
+        counter++;
         if (
-          classNames[index].getBoundingClientRect().top >=
-            window.innerHeight * 0.4 &&
-          classNames[index].getBoundingClientRect().bottom <=
-            window.innerHeight * 0.6
+          // classNames[index].getBoundingClientRect().top >=
+          //   window.innerHeight * 0.4 &&
+          // classNames[index].getBoundingClientRect().bottom <=
+          //   window.innerHeight * 0.6
+          counter >= 5
         ) {
           // window.scrollTo(0, -100);
 

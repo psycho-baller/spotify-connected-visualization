@@ -48,7 +48,7 @@ export default function Experience({ data }: { data: SongType[] }) {
                     position: "absolute",
                     top: `${top}vh`,
                   }}
-                  className={`${song} ${song.connections.instagram.map((connection, index) => connection)}`}
+                  // className={`${song} ${song.connections.instagram.map((connection, index) => connection)}`}
                 >
                   {song.name}
                   {song.connections.instagram.map((connection, index) => {
