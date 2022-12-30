@@ -67,7 +67,7 @@ export const SearchComponent = () => {
   return (
     <form
     // id='search'
-      // onSubmit={handleSubmit}
+      onSubmit={handleSubmit}
       style={{ padding: 16, zIndex: 166910055, position: "fixed" }}
     >
       <input
