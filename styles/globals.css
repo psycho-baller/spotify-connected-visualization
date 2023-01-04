@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body,
 #canvas {
@@ -32,7 +36,7 @@ a {
   }
 }
 
-.opacity0 {
+.opacity-0 {
   opacity: 0;
 }
 .fixed {

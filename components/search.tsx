@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BsSearch } from "react-icons/bs";
 
 export const SearchComponent = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -66,13 +67,16 @@ export const SearchComponent = () => {
 
   return (
     <form
-    // id='search'
+      className="flex justify-center items-center w-screen absolute p-4"
+      // id='search'
       onSubmit={handleSubmit}
-      style={{ padding: 16, zIndex: 166910055, position: "fixed" }}
+      style={{ zIndex: 166910055 }}
     >
       <input
-        style={{ width: 100, marginRight: "12px", height: "24px" }}
+        // style={{ width: 100, marginRight: "12px", height: "24px" }}
         value={searchValue}
+        placeholder="Search Insta usernames"
+        className="font-semibold py-2 px-4 border border-gray-400 rounded shadow"
         onChange={(e) => {
           setSearchValue(e.target.value);
           setClassNames(
@@ -86,7 +90,9 @@ export const SearchComponent = () => {
       <span style={{ padding: "0px 12px" }}>
         {currentCount}/{totalCount}
       </span>
-      <input type="submit" />
+      <input type="submit" value="Find"
+        className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+      />
     </form>
   );
 };

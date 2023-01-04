@@ -3,8 +3,6 @@ import type { ItemType, SongType } from "../lib/types";
 import { getPlaylist } from "../lib/spotify";
 import Experience from "../components/experience";
 import Search from "../components/search";
-import { MatchText, SearchProvider } from "react-ctrl-f";
-// import { useCallback } from "react";
 
 export default function Home({ data }: { data: SongType[] }) {
   // const onCustomScroll = useCallback(
@@ -25,7 +23,10 @@ export default function Home({ data }: { data: SongType[] }) {
   // );
   return (
     <>
-      <Search />
+      <div 
+      >
+        <Search />
+      </div>
       <Canvas id="canvas">
         <Experience data={data} />
       </Canvas>

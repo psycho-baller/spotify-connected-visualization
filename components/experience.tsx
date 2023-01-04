@@ -20,8 +20,6 @@ export default function Experience({ data }: { data: SongType[] }) {
       {/* <PerspectiveCamera ref={cameraRef} makeDefault position={[0, 0, 10]} /> */}
 
       <ScrollControls
-        // @ts-ignore
-        // @ts-ignore
         pages={data.length * 0.15 * width}
         // damping={4}
         // distance={1}
