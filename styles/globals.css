@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root{
+  --spacing: 2vw;
+}
+
 html,
 body,
 #canvas {
@@ -41,4 +45,51 @@ a {
 }
 .fixed {
   position: fixed!important;
+}
+
+.floating-button {
+  position: fixed;
+  bottom: 2vh;
+  right: var(--spacing);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #8F7CFE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.floating-button:hover .popover {
+  display: block;
+}
+
+.popover {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 10px);
+  right: 0;
+  /* translucent */
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: 1px solid grey;
+  border-radius: 5px;
+  font-size: calc(100vh / 40);
+    width: 25vw;
+  padding: 12px;
+
+
+}
+/* if not laptop */
+@media (max-width: 992px) {
+  .popover {
+width: calc(100vw - 2 * var(--spacing)); 
+padding: 10px;
+  }
+}
+
+
+.adjust-z{
+  z-index: 166910055
 }

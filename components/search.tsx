@@ -67,7 +67,7 @@ export const SearchComponent = () => {
 
   return (
     <form
-      className="flex justify-center items-center w-screen absolute p-4"
+      className="flex justify-center items-center w-screen absolute p-4 adjust-z"
       // id='search'
       onSubmit={handleSubmit}
       style={{ zIndex: 166910055 }}
@@ -90,7 +90,7 @@ export const SearchComponent = () => {
       <span style={{ padding: "0px 12px" }}>
         {currentCount}/{totalCount}
       </span>
-      <input type="submit" value="Find"
+      <input type="submit" value={currentCount >0 ? "Next" : "Find"} 
         className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
       />
     </form>

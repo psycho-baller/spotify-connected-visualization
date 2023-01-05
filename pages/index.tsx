@@ -3,6 +3,7 @@ import type { ItemType, SongType } from "../lib/types";
 import { getPlaylist } from "../lib/spotify";
 import Experience from "../components/experience";
 import Search from "../components/search";
+import QuestionCircle from "../components/questionCircle";
 
 export default function Home({ data }: { data: SongType[] }) {
   // const onCustomScroll = useCallback(
@@ -24,8 +25,10 @@ export default function Home({ data }: { data: SongType[] }) {
   return (
     <>
       <div 
+      className="adjust-z"
       >
         <Search />
+        <QuestionCircle/>
       </div>
       <Canvas id="canvas">
         <Experience data={data} />
