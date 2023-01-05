@@ -13,6 +13,6 @@
 - [X] figure out the font problem
 - [X] design the page (songs, connections, text, etc...)
 - [X] phone compatability: have data for different numbers over the project for phone, ipad, desktop
-- [ ] improve scroll (dynamic scroll speed, etc...)
 - [X] make it possible for ppl to search(or filter) for their usernames
-- [ ] beautify the navbar
+- [X] beautify the navbar
+- [ ] improve scroll (dynamic scroll speed, etc...)

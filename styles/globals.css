@@ -78,8 +78,6 @@ a {
   font-size: calc(100vh / 40);
     width: 25vw;
   padding: 12px;
-
-
 }
 /* if not laptop */
 @media (max-width: 992px) {
