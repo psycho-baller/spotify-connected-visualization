@@ -75,7 +75,7 @@ export const SearchComponent = () => {
       <input
         // style={{ width: 100, marginRight: "12px", height: "24px" }}
         value={searchValue}
-        placeholder="Search Insta usernames"
+        placeholder="Search Insta username"
         className="font-semibold py-2 px-4 border border-gray-400 rounded shadow"
         onChange={(e) => {
           setSearchValue(e.target.value);

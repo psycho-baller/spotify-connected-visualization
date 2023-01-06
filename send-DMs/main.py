@@ -18,7 +18,7 @@ with warnings.catch_warnings():
     driver = webdriver.Chrome(service=BraveService(ChromeDriverManager(chrome_type=ChromeType.BRAVE).install()), options=options)
 
 username = 'psycho.baller'
-password = 'opyg87obo8cqep_'
+password = '1DW_yrASS'
 
 message = 'Hey, how are you doing? I hope you\'re having a great day!'
 

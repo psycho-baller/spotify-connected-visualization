@@ -12,8 +12,8 @@ export default function FloatingButton() {
           <br />
           {/* <br /> */}
           This is a visual representation of my favorite songs of for each of
-          the 53 weeks of 2022... but for each song, you can see the people's
-          instagram accounts that I think of when I listen to it.
+          the 53 weeks of 2022... but for each song, you can see the
+          people&apos;s instagram accounts that I think of when I listen to it.
           <br />
           <br />
           <strong>How can I find my song?</strong>

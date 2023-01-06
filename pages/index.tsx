@@ -126,9 +126,35 @@ export async function getStaticProps() {
     "nicholas_bonato",
   ];
   data[46].connections.instagram = ["youssefxclusive", "m_abuali_s"];
+  data[48].connections.instagram = ["naheenkabir"];
   data[50].connections.instagram = [
     "duppy_03",
   ];
+  data[51].connections.instagram = [
+    "sanjith.pp",
+    "osama.w.b",
+    "pineberry_pizza",
+    "katiahalasah",
+    "caitlyngreenwayy",
+    "morss1204",
+    "aileenmulaw",
+    "jo_anjo_an_nn",
+    "liam_abid_hill",
+    "nicholas_bonato",
+    "naheenkabir",
+  ];
+  data[52].connections.instagram = ["_ab.i__"];
+
+  // log all instagram connections once
+  // const set = new Set();
+  //  data.forEach((song) => {
+  //   song.connections.instagram.forEach((connection) => {
+  //     set.add(connection);
+  //   });
+  //   });
+  //   console.log(set);
+
+
 
   return {
     props: {
