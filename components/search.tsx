@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { BsSearch } from "react-icons/bs";
 
 export const SearchComponent = () => {
   const [searchValue, setSearchValue] = useState("");
