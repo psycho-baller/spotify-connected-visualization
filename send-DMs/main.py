@@ -22,7 +22,40 @@ password = '1DW_yrASS'
 
 message = 'Hey, how are you doing? I hope you\'re having a great day!'
 
-friends = ['danamaalouf', 'osama.w.b', 'pineberry_pizza']
+friends = [  'keana.gigliotti',
+  'danamaalouf',
+  '_ab.i__',
+  'jujeedee_',
+  'youssefxclusive',
+  '_gracemccue',
+  'cindy.art',
+  'sanjith.pp',
+  'liam_abid_hill',
+  'frazerw_77',
+  'itsprobablyzidaan',
+  'naheenkabir',
+  'rundle.floor3',
+  'claudia_lee03',
+  'ante9a',
+  'haroontanveer01',
+  'aileenmulaw',
+  'nicholas_bonato',
+  'ayo',
+  'noureddinenakib',
+  'mohd_ere',
+  'laaadlgd',
+  'rxalawie',
+  'tiyaalmurr',
+  'm_abuali_s',
+  'duppy_03',
+  'osama.w.b',
+  'pineberry_pizza',
+  'katiahalasah',
+  'caitlyngreenwayy',
+  'morss1204',
+  'jo_anjo_an_nn',
+  '_.moizs'
+  ]
 # sleep(20)
 
 # Go to Instagram's login page

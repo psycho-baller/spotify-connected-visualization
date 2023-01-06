@@ -143,7 +143,13 @@ export async function getStaticProps() {
     "nicholas_bonato",
     "naheenkabir",
   ];
-  data[52].connections.instagram = ["_ab.i__"];
+  data[52].connections.instagram = [
+    "_ab.i__",
+    "naheenkabir",
+    "sanjith.pp",
+    "duppy_03",
+    "_.moizs"
+  ];
 
   // log all instagram connections once
   // const set = new Set();
