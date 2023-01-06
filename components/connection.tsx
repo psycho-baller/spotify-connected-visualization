@@ -88,7 +88,6 @@ export default function Connections({
             ref={textRef}
             font={"bangers-v20-latin-regular.woff"}
             fontSize={fontSize}
-            // ref={textRef}
           >
             <meshNormalMaterial />
             {connection}

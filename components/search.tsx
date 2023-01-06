@@ -20,7 +20,7 @@ export const SearchComponent = () => {
         index = currentCount;
         setCurrentCount((curr) => curr + 1);
       } else {
-        setCurrentCount(0);
+        setCurrentCount(1);
         index = 0;
       }
 

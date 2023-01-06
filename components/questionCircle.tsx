@@ -7,8 +7,8 @@ export default function FloatingButton() {
       {/* <i className="fas fa-question-circle adjust-z"></i> */}
       <FaQuestion className="adjust-z" />
       <div className="popover adjust-z">
-        <p>
-          <strong>What is this?</strong>
+        <p className=" text-purple-200">
+          <strong className="text-purple-100">What is this?</strong>
           <br />
           {/* <br /> */}
           This is a visual representation of my favorite songs of for each of
@@ -16,7 +16,7 @@ export default function FloatingButton() {
           people&apos;s instagram accounts that I think of when I listen to it.
           <br />
           <br />
-          <strong>How can I find my song?</strong>
+          <strong className="text-purple-100">How can I find my song?</strong>
           <br />
           {/* <br /> */}
           You can search up your instagram username using the search bar above.
