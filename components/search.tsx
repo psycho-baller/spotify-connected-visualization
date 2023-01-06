@@ -66,7 +66,7 @@ export const SearchComponent = () => {
 
   return (
     <form
-      className="flex justify-center items-center w-screen absolute p-4 adjust-z"
+      className="flex justify-center items-center w-screen absolute p-4 adjust-z translucent"
       // id='search'
       onSubmit={handleSubmit}
       style={{ zIndex: 166910055 }}
@@ -75,7 +75,7 @@ export const SearchComponent = () => {
         // style={{ width: 100, marginRight: "12px", height: "24px" }}
         value={searchValue}
         placeholder="Search Insta username"
-        className="font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+        className="font-semibold text-purple-200 py-2 px-4 border border-purple-300 rounded shadow bg-gray-800/50 focus:border-textColor focus:ring-4 focus:outline-none focus:bg-gray-800/80"
         onChange={(e) => {
           setSearchValue(e.target.value);
           setClassNames(
@@ -86,11 +86,13 @@ export const SearchComponent = () => {
           setCurrentCount(0);
         }}
       />
-      <span style={{ padding: "0px 12px" }}>
+      <span style={{ padding: "0px 12px" }} className="text-purple-200">
         {currentCount}/{totalCount}
       </span>
-      <input type="submit" value={currentCount >0 ? "Next" : "Find"} 
-        className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+      <input
+        type="submit"
+        value={currentCount > 0 ? "Next" : "Find"}
+        className="bg-gray-200 hover:bg-gray-600/30 font-semibold py-2 px-4 border rounded shadow  bg-gray-600/60 text-purple-200 focus:border-textColor focus:ring-4 focus:outline-none border-purple-300"
       />
     </form>
   );

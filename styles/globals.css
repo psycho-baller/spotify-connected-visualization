@@ -91,3 +91,9 @@ padding: 10px;
 .adjust-z{
   z-index: 166910055
 }
+/* translucent with linear gradient */
+.translucent {
+  background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+
+  /* color: white; */
+}
