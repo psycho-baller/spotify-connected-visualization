@@ -103,7 +103,6 @@ export async function getStaticProps() {
     "naheenkabir",
     "nicholas_bonato",
     "sanjith.pp",
-    "ayo",
   ];
   data[27].connections.instagram = ["danamaalouf", "noureddinenakib"];
   data[28].connections.instagram = ["mohd_ere"];

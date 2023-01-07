@@ -16,6 +16,7 @@ export const SearchComponent = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // check if the decrement or increment button is clicked
+    if(classNames?.length > 0){
       if (currentCount < totalCount) {
         index = currentCount;
         setCurrentCount((curr) => curr + 1);
@@ -24,52 +25,53 @@ export const SearchComponent = () => {
         index = 0;
       }
 
-    if (classNames[index]) {
-      classNames[index].scrollIntoView({
-        behavior: "auto",
-        block: "center",
-        // inline: "center",
-      });
-      // check if we can increment more
-
-      counter = 0;
-      // scroll to the first match
-      let loop = setInterval(() => {
-        // currentScrollTop = window.innerHeight;
-        // if (currentScrollTop > previousScrollTop) {
-        //   console.log("Scrolling down");
-        // } else {
-        //   console.log("Scrolling up");
-        // }
-        // previousScrollTop = currentScrollTop;
+      if (classNames[index]) {
         classNames[index].scrollIntoView({
           behavior: "auto",
           block: "center",
           // inline: "center",
         });
-        counter++;
-        if (
-          // classNames[index].getBoundingClientRect().top >=
-          //   window.innerHeight * 0.4 &&
-          // classNames[index].getBoundingClientRect().bottom <=
-          //   window.innerHeight * 0.6
-          counter >= 7
-        ) {
-          // window.scrollTo(0, -100);
+        // check if we can increment more
 
-          clearInterval(loop);
-        }
-      }, 80);
+        counter = 0;
+        // scroll to the first match
+        let loop = setInterval(() => {
+          // currentScrollTop = window.innerHeight;
+          // if (currentScrollTop > previousScrollTop) {
+          //   console.log("Scrolling down");
+          // } else {
+          //   console.log("Scrolling up");
+          // }
+          // previousScrollTop = currentScrollTop;
+          classNames[index].scrollIntoView({
+            behavior: "auto",
+            block: "center",
+            // inline: "center",
+          });
+          counter++;
+          if (
+            // classNames[index].getBoundingClientRect().top >=
+            //   window.innerHeight * 0.4 &&
+            // classNames[index].getBoundingClientRect().bottom <=
+            //   window.innerHeight * 0.6
+            counter >= 7
+          ) {
+            // window.scrollTo(0, -100);
+
+            clearInterval(loop);
+          }
+        }, 80);
+      }
     }
+
 
   };
 
   return (
     <form
       className="flex justify-center items-center w-screen absolute p-4 adjust-z translucent"
-      // id='search'
       onSubmit={handleSubmit}
-      style={{ zIndex: 166910055 }}
+      // style={{ zIndex: 166910055 }}
     >
       <input
         // style={{ width: 100, marginRight: "12px", height: "24px" }}

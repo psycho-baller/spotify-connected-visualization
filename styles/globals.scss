@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
+:root {
   --spacing: 2vw;
 }
 
@@ -16,7 +16,7 @@ body,
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh!important;
+  height: 100vh !important;
   overflow: hidden;
   display: block;
 }
@@ -40,13 +40,6 @@ a {
   }
 }
 
-.opacity-0 {
-  opacity: 0;
-}
-.fixed {
-  position: fixed!important;
-}
-
 .floating-button {
   position: fixed;
   bottom: 2vh;
@@ -54,15 +47,25 @@ a {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: #8F7CFE;
+  background-color: #8f7cfe;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  
 }
 
-.floating-button:hover .popover {
-  display: block;
+.invisible-space {
+  display: none;
+
+  position: absolute;
+  bottom: calc(100% - 20px);
+  right: 0;
+  width: 25vw;
+  padding: 12px;
+  height: 50vh;
+  cursor: default;
+  
 }
 
 .popover {
@@ -76,24 +79,63 @@ a {
   border: 1px solid grey;
   border-radius: 5px;
   font-size: calc(100vh / 40);
-    width: 25vw;
+  width: 25vw;
   padding: 12px;
+  cursor: default;
 }
 /* if not laptop */
 @media (max-width: 992px) {
   .popover {
-width: calc(100vw - 2 * var(--spacing)); 
-padding: 10px;
+    width: calc(100vw - 2 * var(--spacing));
+    padding: 10px;
+  }
+  .invisible-space {
+    width: calc(100vw - 2 * var(--spacing));
+    padding: 10px;
   }
 }
 
+.floating-button:hover {
+  .popover {
+    display: block;
+  }
+  .invisible-space {
+    display: block;
+  }
+  invisible-space:hover .popover {
+    display: block;
+  }
+}
 
-.adjust-z{
-  z-index: 166910055
+.adjust-z {
+  z-index: 166910055;
 }
 /* translucent with linear gradient */
 .translucent {
   background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 
   /* color: white; */
+}
+
+.footer {
+  // padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  // flex-wrap: wrap;
+}
+
+.footer > a {
+  color: #8f7cfe;
+  // text-decoration: none;
+  // margin: 0 0.5rem;
+  flex: 1;
+  align-content: center;
+}
+
+.footer > a > svg {
+  margin-left: auto;
+  margin-right: auto;
 }
