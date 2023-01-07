@@ -19,7 +19,7 @@ password = '1DW_yrASS'
 
 long_message = '''
 Back in mid-2022, I had this idea of building a website where I can showcase my "songs of the week" and the people each song remind me of. You are receiving this message because you are in at least one song, there is a search functionality in the website where you can look up your insta USERNAME so you can jump to your name and song. Let me know if you have any further ideas or suggestions for the website. I do plan on building a web app where you can easily build your own version of this, let me now if you would acc be interested in that. I wanna see if I should prioritize that or not. Lastly, thank you for being a part of my 2022, and specifically, part of my songs of the week. I hope you have a wonderful 2023.
-website: https://spotifyconnected.vercel.app/ (I recommend opening it w yr laptop or desktop but it works on mobile too)
+website: https://spotifyconnected.vercel.app/ (Better experience on laptop/desktop)
 '''
 
 friends = [  'keana.gigliotti',
