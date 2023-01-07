@@ -82,9 +82,24 @@ export async function getStaticProps() {
   ];
   data[13].connections.instagram = ["keana.gigliotti"];
   data[14].connections.instagram = ["naheenkabir"];
-  data[15].connections.instagram = ["rundle.floor3"];
+  data[15].connections.instagram = [
+    "alysonjonesss",
+    "theonlylazyshariq",
+    "haleychuch",
+    "devan.minard",
+    "joeymtuttle",
+    "jujeedee_",
+    "youssefxclusive",
+    "_jackvw_",
+    "keana.gigliotti",
+    "wilbur_elb",
+    "n.angela1414",
+    "gomez_kris7",
+  ];
   data[16].connections.instagram = ["naheenkabir", "_ab.i__"];
-  data[17].connections.instagram = ["_ab.i__", "rundle.floor3"];
+  data[17].connections.instagram = [
+    "_ab.i__",
+  ];
   data[19].connections.instagram = [
     "claudia_lee03",
     "ante9a",
