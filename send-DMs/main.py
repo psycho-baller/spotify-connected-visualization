@@ -1,3 +1,4 @@
+import os
 from time import sleep
 import warnings
 
@@ -15,57 +16,11 @@ with warnings.catch_warnings():
     driver = webdriver.Chrome(service=BraveService(ChromeDriverManager(chrome_type=ChromeType.BRAVE).install()), options=options)
 
 username = 'psycho.baller'
-password = '1DW_yrASS'
+password = os.getenv('INSTA_PW')
 
-long_message = '''
-Back in mid-2022, I had this idea of building a website where I can showcase my "songs of the week" and the people each song remind me of. You are receiving this message because you are in at least one song, there is a search functionality in the website where you can look up your insta USERNAME so you can jump to your name and song. Let me know if you have any further ideas or suggestions for the website. I do plan on building a web app where you can easily build your own version of this, let me now if you would acc be interested in that. I wanna see if I should prioritize that or not. Lastly, thank you for being a part of my 2022, and specifically, part of my songs of the week. I hope you have a wonderful 2023.
-website: https://spotifyconnected.vercel.app/ (Better experience on laptop/desktop)
-'''
+long_message = 'Back in mid-2022, I had this idea of building a website where I can showcase my "songs of the week" and the people each song remind me of. You are receiving this message because you are in at least one song, there is a search functionality in the website where you can look up your insta USERNAME so you can jump to your name and song. Let me know if you have any further ideas or suggestions for the website. I do plan on building a web app where you can easily build your own version of this, let me now if you would acc be interested in that. I wanna see if I should prioritize that or not. Lastly, thank you for being a part of my 2022, and specifically, part of my songs of the week. I hope you have a wonderful 2023. Website: https://spotifyconnected.vercel.app/ (Better experience on laptop/desktop)'
 
-friends = [  'keana.gigliotti',
-  'danamaalouf',
-  '_ab.i__',
-  'jujeedee_',
-  'youssefxclusive',
-  '_gracemccue',
-  'cindy.art',
-  'sanjith.pp',
-  'liam_abid_hill',
-  'frazerw_77',
-  'itsprobablyzidaan',
-  'naheenkabir',
-  'alysonjonesss',
-  'theonlylazyshariq',
-  'haleychuch',
-  'devan.minard',
-  'joeymtuttle',
-  '_jackvw_',
-  'wilbur_elb',
-  'n.angela1414',
-  'gomez_kris7',
-  'cameron.winfield',
-  'claudia_lee03',
-  'ante9a',
-  'haroontanveer01',
-  'aileenmulaw',
-  'ayanj006',
-  'nicholas_bonato',
-  'noureddinenakib',
-  'mohd_ere',
-  'laaadlgd',
-  'rxalawie',
-  'tiyaalmurr',
-  'm_abuali_s',
-  'wesleyumeh',
-  'duppy_03',
-  'osama.w.b',
-  'pineberry_pizza',
-  'katiahalasah',
-  'caitlyngreenwayy',
-  'morss1204',
-  'jo_anjo_an_nn',
-  '_.moizs'
-  ]
+friends = os.getenv('CONNECTIONS')
 # sleep(20)
 
 # Go to Instagram's login page
