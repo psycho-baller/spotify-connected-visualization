@@ -107,6 +107,7 @@ export async function getStaticProps() {
     "haroontanveer01",
     "aileenmulaw",
   ];
+  data[21].connections.instagram = ["haleychuch", "ayanj006"];
   data[23].connections.instagram = ["ante9a"];
   data[24].connections.instagram = [
     "ante9a",
@@ -132,7 +133,7 @@ export async function getStaticProps() {
   data[38].connections.instagram = ["laaadlgd", "_ab.i__"];
   data[39].connections.instagram = ["_ab.i__"];
   data[40].connections.instagram = ["_ab.i__"];
-  data[41].connections.instagram = ["danamaalouf"];
+  data[41].connections.instagram = ["danamaalouf", "wesleyumeh"];
   data[42].connections.instagram = ["laaadlgd"];
   data[43].connections.instagram = ["_ab.i__"];
   data[45].connections.instagram = [
