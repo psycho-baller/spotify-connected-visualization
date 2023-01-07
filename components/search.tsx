@@ -11,6 +11,7 @@ export const SearchComponent = () => {
 
   let index = 0;
   let counter: number;
+  let value: string;
   // let previousScrollTop = 0;
   // let currentScrollTop = 0;
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -79,12 +80,13 @@ export const SearchComponent = () => {
         placeholder="Search Insta username"
         className="font-semibold text-purple-200 py-2 px-4 border border-purple-300 rounded shadow bg-gray-800/50 focus:border-textColor focus:ring-4 focus:outline-none focus:bg-gray-800/80"
         onChange={(e) => {
-          setSearchValue(e.target.value);
-          setClassNames(
-            document.getElementsByClassName(e.target.value.toLowerCase())
-          );
+          value = e.target.value;
+          setSearchValue(value);
           // get classNames that match the searchValue
-          setTotalCount(document.getElementsByClassName(e.target.value).length);
+          setClassNames(
+            document.getElementsByClassName(value.toLowerCase())
+          );
+          setTotalCount(document.getElementsByClassName(value.toLowerCase()).length);
           setCurrentCount(0);
         }}
       />
