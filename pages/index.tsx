@@ -24,11 +24,20 @@ export default function Home({ data }: { data: SongType[] }) {
   // );
   return (
     <>
-      <div 
-      className="adjust-z"
-      >
+      <div className="adjust-z">
         <Search />
-        <QuestionCircle/>
+        <QuestionCircle />
+        <p className="absolute bottom-0 pb-2 ml-4 adjust-z text-blue-300">
+          Made with 💜 by{" "}
+          <a
+            href="https://rami-maalouf.vercel.app/"
+            target={"_blank"}
+            rel={"noopener noreferrer"}
+            className=" text-blue-400 hover:text-blue-300"
+          >
+            Rami
+          </a>
+        </p>
       </div>
       <Canvas id="canvas">
         <Experience data={data} />
