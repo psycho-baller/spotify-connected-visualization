@@ -14,7 +14,8 @@ export default function Experience({ data }: { data: SongType[] }) {
   
   return (
     <>
-      <ambientLight />
+      {/* <ambientLight /> */}
+      <pointLight position={[10, 10, 10]} />
       <ScrollControls
         pages={data.length * 0.15 * width}
         // damping={4}
