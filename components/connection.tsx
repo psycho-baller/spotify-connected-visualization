@@ -67,15 +67,9 @@ export default function Connections({
           const url = `https://www.instagram.com/${connection}`;
           window.open(url, "_blank");
         }}
-
-        // style={{top: page * 100 + "vh"}}
-        // scale={active ? [1.5, 1.5, 1.5] : [1, 1, 1]}
-        //position={[0, boxRef.current.position.y, 0]}
         //castShadow
         //receiveShadow
       >
-        {/* <sphereGeometry args={[0.5, 16, 16]} /> */}
-        {/* <meshStandardMaterial map={texture} /> */}
         {/* @ts-ignore */}
         <Float
           ref={floatRef}

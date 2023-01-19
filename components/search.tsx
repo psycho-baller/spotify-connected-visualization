@@ -72,10 +72,8 @@ export const SearchComponent = () => {
     <form
       className="flex justify-center items-center w-screen absolute p-4 adjust-z translucent"
       onSubmit={handleSubmit}
-      // style={{ zIndex: 166910055 }}
     >
       <input
-        // style={{ width: 100, marginRight: "12px", height: "24px" }}
         value={searchValue}
         placeholder="Search Insta username"
         className="font-semibold text-purple-200 py-2 px-4 border border-purple-300 rounded shadow bg-gray-800/50 focus:border-textColor focus:ring-4 focus:outline-none focus:bg-gray-800/80"

@@ -6,22 +6,6 @@ import Search from "../components/search";
 import QuestionCircle from "../components/questionCircle";
 
 export default function Home({ data }: { data: SongType[] }) {
-  // const onCustomScroll = useCallback(
-  //   (id: string, fixedHeaderHeight: number | undefined) => {
-  //     const dom = document.getElementById(id);
-  //     if (dom) {
-  //       const topOfElement =
-  //         dom.getBoundingClientRect().bottom +
-  //         window.pageYOffset -
-  //         fixedHeaderHeight!;
-  //       window.scroll({
-  //         top: topOfElement,
-  //         behavior: "smooth",
-  //       });
-  //     }
-  //   },
-  //   []
-  // );
   return (
     <>
       <div className="adjust-z">
